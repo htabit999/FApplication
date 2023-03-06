@@ -9,8 +9,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
     }
      public fun gotoLogin(view: View) {
             startActivity(Intent(this, LoginActivity::class.java))
@@ -19,7 +17,4 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, RegistrationActivity::class.java))
         }
 
-    public fun addTache(view: View) {
-        startActivity(Intent(this, TacheActivity::class.java))
-    }
 }

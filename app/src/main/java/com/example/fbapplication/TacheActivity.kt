@@ -1,5 +1,6 @@
 package com.example.fbapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
@@ -21,9 +22,11 @@ class TacheActivity : AppCompatActivity() {
         var status : String = findViewById<EditText>(R.id.status_edit_text).text.toString()
         var dated : String = findViewById<EditText>(R.id.editTextDateD).text.toString()
         var datef : String = findViewById<EditText>(R.id.editTextDateF).text.toString()
-        var descr : String = findViewById<EditText>(R.id.description_edit_text).text.toString()
-        val tache = Tache(name, descr,collab,dated,datef,status)
+        var descr1 : String = findViewById<EditText>(R.id.description1_edit_text).text.toString()
+        var descr2 : String = findViewById<EditText>(R.id.description2_edit_text).text.toString()
 
-        db.child("IDTache").child("Tache").child(UUID.randomUUID().toString()).push().setValue(tache)
+        val tache = Tache(name,descr1,descr2,collab,dated,datef,status)
+        db.child("Base").child("Tache").child(UUID.randomUUID().toString()).push().setValue(tache)
+        startActivity(Intent(this, MenuActivity::class.java))
         }
     }
