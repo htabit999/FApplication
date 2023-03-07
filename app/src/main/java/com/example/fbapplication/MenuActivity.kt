@@ -13,8 +13,8 @@ class MenuActivity : AppCompatActivity() {
     public fun addTache(view: View) {
         startActivity(Intent(this, TacheActivity::class.java))
     }
-    public fun addProjet(view: View) {
-        startActivity(Intent(this, ProjetActivity::class.java))
+    public fun menuProjet(view: View) {
+        startActivity(Intent(this, MenuProjetActivity::class.java))
     }
     public fun addCollab(view: View) {
         startActivity(Intent(this, SuiviActivity::class.java))

@@ -7,71 +7,75 @@
     tools:context=".MenuActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="146dp"
         android:layout_marginTop="32dp"
-        android:text="Menu Principal"
+        android:layout_marginEnd="145dp"
+        android:text="Menu Projet"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <Button
-        android:id="@+id/collab_button"
+        android:id="@+id/listeP_button"
         android:layout_width="379dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:onClick="addCollab"
-        android:text="Collaborateurs"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="82dp"
+        android:layout_marginEnd="16dp"
+        android:onClick="listeProjet"
+        android:text="Liste des projets"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
+        app:layout_constraintTop_toBottomOf="@+id/textViewP" />
 
     <Button
-        android:id="@+id/projet_button"
+        android:id="@+id/AjoutP_button"
         android:layout_width="379dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="21dp"
         android:layout_marginEnd="16dp"
-        android:onClick="menuProjet"
-        android:text="Projets"
-        app:layout_constraintBottom_toTopOf="@+id/suivi_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/collab_button"
-        app:layout_constraintVertical_bias="0.5" />
-
-    <Button
-        android:id="@+id/tache_button"
-        android:layout_width="379dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:onClick="addTache"
-        android:text="Taches"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/suivi_button" />
-
-    <Button
-        android:id="@+id/suivi_button"
-        android:layout_width="379dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:onClick="addSuivi"
-        android:text="Suivi"
-        app:layout_constraintBottom_toTopOf="@+id/tache_button"
+        android:onClick="addProjet"
+        android:text="Ajouter un projet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/projet_button"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintTop_toBottomOf="@+id/listeP_button" />
+
+    <Button
+        android:id="@+id/suppP_button"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:onClick="supProjet"
+        android:text="Supprimer un projet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/modP_button" />
+
+    <Button
+        android:id="@+id/modP_button"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:onClick="modProjet"
+        android:text="Modifier un projet"
+        app:layout_constraintBottom_toTopOf="@+id/suppP_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AjoutP_button"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
