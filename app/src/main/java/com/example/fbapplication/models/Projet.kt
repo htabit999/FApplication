@@ -1,4 +1,4 @@
-package com.example.fbapplication
+package com.example.fbapplication.models
 
 data class Projet(
     var PROJET : String,

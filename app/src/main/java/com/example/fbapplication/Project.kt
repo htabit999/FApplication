@@ -1,4 +1,4 @@
-package com.example.fbapplication.models;
+package com.example.fbapplication;
 
 data class Project(
     var datedeb: String,
