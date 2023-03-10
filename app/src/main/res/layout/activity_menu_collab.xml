@@ -4,78 +4,82 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MenuActivity">
+    tools:context=".MenuCollabActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="146dp"
         android:layout_marginTop="32dp"
-        android:text="Menu Principal"
+        android:layout_marginEnd="145dp"
+        android:text="Menu Collaborateur"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <Button
-        android:id="@+id/collab_button"
+        android:id="@+id/listeC_button"
         android:layout_width="379dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:onClick="menuCollab"
-        android:text="Collaborateurs"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="82dp"
+        android:layout_marginEnd="16dp"
+        android:onClick="listeCollab"
+        android:text="Liste des collaborateur"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:cornerRadius="240dp"/>
-
-
-    <Button
-        android:id="@+id/projet_button"
-        android:layout_width="379dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:onClick="menuProjet"
-        android:text="Projets"
-        app:layout_constraintBottom_toTopOf="@+id/suivi_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/collab_button"
-        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintTop_toBottomOf="@+id/textViewP"
         app:cornerRadius="240dp"/>
 
     <Button
-        android:id="@+id/tache_button"
+        android:id="@+id/AjoutC_button"
         android:layout_width="379dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="21dp"
         android:layout_marginEnd="16dp"
-        android:onClick="addTache"
-        android:text="Taches"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/suivi_button"
-        app:cornerRadius="240dp"/>
-
-    <Button
-        android:id="@+id/suivi_button"
-        android:layout_width="379dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:onClick="addSuivi"
-        android:text="Suivi"
-        app:layout_constraintBottom_toTopOf="@+id/tache_button"
+        android:onClick="addCollab"
+        android:text="Ajouter un collaborateur"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/projet_button"
-        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintTop_toBottomOf="@+id/listeC_button"
+        app:cornerRadius="240dp"/>
+
+    <Button
+        android:id="@+id/suppC_button"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:onClick="supCollab"
+        android:text="Supprimer un collaborateur"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/modC_button"
+        app:cornerRadius="240dp"/>
+
+    <Button
+        android:id="@+id/modC_button"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:onClick="modCollab"
+        android:text="Modifier un collaborateur"
+        app:layout_constraintBottom_toTopOf="@+id/suppC_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AjoutC_button"
+        app:layout_constraintVertical_bias="0.0"
         app:cornerRadius="240dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

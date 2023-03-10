@@ -17,9 +17,9 @@ class MenuProjetActivity : AppCompatActivity() {
             startActivity(Intent(this, DataActivity::class.java))
         }
         public fun suppProjet(view: View) {
-            startActivity(Intent(this, SupProjetActivity::class.java))
+            startActivity(Intent(this, DataActivity::class.java))
         }
         public fun modProjet(view: View) {
-            startActivity(Intent(this, modProjetActivity::class.java))
+            startActivity(Intent(this, DataActivity::class.java))
         }
     }

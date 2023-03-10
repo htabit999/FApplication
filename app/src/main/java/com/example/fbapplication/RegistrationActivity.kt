@@ -11,13 +11,11 @@ import com.google.firebase.database.FirebaseDatabase
 
 class RegistrationActivity : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
         auth = FirebaseAuth.getInstance()
     }
-
     public fun registerUser(view: View) {
 
         var email: String = findViewById<EditText>(R.id.email_edit_text).text.toString()

@@ -12,6 +12,15 @@
         android:theme="@style/Theme.FBApplication"
         tools:targetApi="31">
         <activity
+            android:name=".majProjetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".majCollabActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MenuCollabActivity"
+            android:exported="false" />
+        <activity
             android:name=".DataActivity"
             android:exported="false" />
         <activity

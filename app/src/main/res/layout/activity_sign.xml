@@ -116,7 +116,8 @@
         android:background="#000"
         android:text="GO"
         android:textColor="#fff"
-        android:transitionName="button_tran" />
+        android:transitionName="button_tran"
+        app:cornerRadius="240dp"/>
 
     <Button
         android:id="@+id/reg_login_btn"

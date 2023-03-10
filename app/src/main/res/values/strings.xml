@@ -1,5 +1,4 @@
 <resources>
     <string name="app_name">E N S A J</string>
-    <string-array name="posts">
-    </string-array>
+    <string-array name="posts"></string-array>
 </resources>
