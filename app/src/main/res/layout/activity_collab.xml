@@ -74,7 +74,7 @@
         android:layout_marginEnd="57dp"
         android:ems="10"
         android:hint="Entrer le role du collaborateur"
-        android:inputType="date"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fonctioncol_edit_text" />

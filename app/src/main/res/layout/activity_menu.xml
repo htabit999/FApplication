@@ -54,7 +54,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:onClick="addTache"
+        android:onClick="menuTache"
         android:text="Taches"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,7 +68,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:onClick="addSuivi"
+        android:onClick="menuSuivi"
         android:text="Suivi"
         app:layout_constraintBottom_toTopOf="@+id/tache_button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,5 +77,4 @@
         app:layout_constraintTop_toBottomOf="@+id/projet_button"
         app:layout_constraintVertical_bias="0.5"
         app:cornerRadius="240dp"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

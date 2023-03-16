@@ -16,7 +16,7 @@ class MenuCollabActivity : AppCompatActivity()
         startActivity(Intent(this, CollabActivity::class.java))
     }
     public fun listeCollab(view: View) {
-        startActivity(Intent(this, CollabActivity::class.java))
+        startActivity(Intent(this, listeCollabActivity::class.java))
     }
     public fun suppCollab(view: View) {
         startActivity(Intent(this, CollabActivity::class.java))

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
+import com.example.fbapplication.models.Collaborateur
 import com.google.firebase.database.FirebaseDatabase
 import java.util.*
 
@@ -17,6 +18,7 @@ class CollabActivity : AppCompatActivity() {
     }
     public fun addCollab(view: View)
         {
+            var idc : String = db.push().key!!
             var nom: String = findViewById<EditText>(R.id.nomcol_edit_text).text.toString()
             var prenom: String = findViewById<EditText>(R.id.prenomcol_edit_text).text.toString()
             var fonction: String = findViewById<EditText>(R.id.emailcol_edit_text).text.toString()
@@ -25,9 +27,15 @@ class CollabActivity : AppCompatActivity() {
             if (nom.isEmpty() || prenom.isEmpty() || fonction.isEmpty() || email.isEmpty() || role.isEmpty()) {
                 Toast.makeText(this, "Il faut remplir tous les champs", Toast.LENGTH_SHORT).show()
             } else {
-                val tache = Collaborateur(nom, prenom, fonction, email, role)
-                db.child("Base").child("Collaborateur").child(UUID.randomUUID().toString()).push()
-                    .setValue(tache)
+                val collab = Collaborateur(idc,nom, prenom, fonction, email, role)
+                //db.child("Base").child("Collaborateur").child(UUID.randomUUID().toString()).push()
+                  //  .setValue(tache)
+                db.child("Base").child("Collaborateur").child(idc).setValue(collab)
+                    .addOnCompleteListener {
+                        Toast.makeText(this, "Data inserted successfully", Toast.LENGTH_LONG).show()
+                    }.addOnFailureListener { err ->
+                        Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_LONG).show()
+                    }
                 startActivity(Intent(this, MenuActivity::class.java))
             }
         }

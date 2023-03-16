@@ -12,6 +12,37 @@
         android:theme="@style/Theme.FBApplication"
         tools:targetApi="31">
         <activity
+            android:name=".detSuiviActivity"
+            android:exported="false" />
+        <activity
+            android:name=".menuSuiviActivity"
+            android:exported="false" />
+        <activity
+            android:name=".barActivity"
+            android:exported="false" />
+        <activity
+            android:name=".viewcolActivity"
+            android:exported="false" />
+        <activity
+            android:name=".listeCollabActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.login.listeCollabActivity"
+            android:exported="false"
+            android:label="@string/title_activity_liste_collab" />
+        <activity
+            android:name=".majTacheActivity"
+            android:exported="false" />
+        <activity
+            android:name=".listeTacheActivity"
+            android:exported="false" />
+        <activity
+            android:name=".menuTacheActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PrjActivity"
+            android:exported="false" />
+        <activity
             android:name=".majProjetActivity"
             android:exported="false" />
         <activity

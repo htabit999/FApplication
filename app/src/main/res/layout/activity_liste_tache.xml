@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SuiviActivity">
+    tools:context=".listeTacheActivity">
+
     <ListView
-        android:id="@+id/listeView"
+        android:id="@+id/listeTView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"

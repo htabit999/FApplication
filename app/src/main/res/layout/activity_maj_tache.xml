@@ -4,24 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".majProjetActivity">
+    tools:context=".majTacheActivity">
 
     <EditText
-        android:id="@+id/nomp_edit_text"
+        android:id="@+id/nomt_edit_text"
         android:layout_width="379dp"
         android:layout_height="45dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="31dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="Nom du projet"
+        android:hint="Nom de la tache"
         android:inputType="text"
         android:transitionName="username_tran"
         app:counterMaxLength="15"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
         android:id="@+id/descriptionp1_edit_text"
@@ -31,11 +30,11 @@
         android:layout_marginTop="14dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="Description du projet"
+        android:hint="Description de la tache"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nomp_edit_text" />
+        app:layout_constraintTop_toBottomOf="@+id/nomt_edit_text" />
 
     <EditText
         android:id="@+id/descriptionp2_edit_text"
@@ -45,116 +44,130 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="Description du projet"
+        android:hint="Description de la tache"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descriptionp1_edit_text" />
 
     <EditText
-        android:id="@+id/chef_edit_text"
+        android:id="@+id/col_edit_text"
         android:layout_width="379dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="Chef Projet"
+        android:hint="Collaborateur"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descriptionp2_edit_text" />
 
     <EditText
-        android:id="@+id/editTextPDateD"
-        android:layout_width="155dp"
-        android:layout_height="43dp"
+        android:id="@+id/editTextTDateD"
+        android:layout_width="166dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="--/--/----"
+        android:hint="Date Debut Tache"
         android:inputType="date"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chef_edit_text" />
+        app:layout_constraintTop_toBottomOf="@+id/col_edit_text" />
 
     <EditText
-        android:id="@+id/editTextPDateF"
-        android:layout_width="169dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:id="@+id/editTextTDateF"
+        android:layout_width="176dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="17dp"
         android:ems="10"
-        android:hint="--/--/----"
+        android:hint="Date Fin Tache"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editTextPDateD"
-        app:layout_constraintTop_toBottomOf="@+id/chef_edit_text" />
+        app:layout_constraintTop_toBottomOf="@+id/col_edit_text" />
 
     <EditText
-        android:id="@+id/statusP_edit_text"
-        android:layout_width="215dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:id="@+id/statusT_edit_text"
+        android:layout_width="160dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="231dp"
         android:ems="10"
-        android:hint="Statut Projet"
+        android:hint="Statut Tache"
         android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPDateF" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextAvancement" />
 
     <Button
-        android:id="@+id/modpro_button"
+        android:id="@+id/modtch_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="55dp"
-        android:onClick="modProjet"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="20dp"
+        android:onClick="modTache"
         android:text="Modifier"
         app:cornerRadius="240dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextAv" />
+        app:layout_constraintTop_toBottomOf="@+id/statusT_edit_text" />
 
     <Button
-        android:id="@+id/suppro_button"
+        android:id="@+id/suptch_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="74dp"
-        android:layout_marginTop="169dp"
+        android:layout_marginTop="188dp"
         android:layout_marginEnd="56dp"
-        android:onClick="supProjet"
+        android:onClick="supTache"
         android:text="Supprimer"
         app:cornerRadius="240dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/modpro_button"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPDateF" />
+        app:layout_constraintStart_toEndOf="@+id/modtch_button"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTDateF" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="152dp"
-        android:layout_marginTop="42dp"
-        android:layout_marginEnd="152dp"
-        android:text="Projets"
+        android:layout_marginStart="155dp"
+        android:layout_marginTop="58dp"
+        android:layout_marginEnd="165dp"
+        android:text="Tache"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextAv"
+        android:id="@+id/editTextProjet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="7dp"
         android:layout_marginEnd="183dp"
         android:ems="10"
-        android:hint="Avancement"
+        android:hint="Nom du projet"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/statusP_edit_text" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTDateD" />
+
+    <EditText
+        android:id="@+id/editTextAvancement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="185dp"
+        android:ems="10"
+        android:hint="Taux d avancement"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextProjet" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

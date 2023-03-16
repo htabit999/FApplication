@@ -11,7 +11,7 @@ class MenuActivity : AppCompatActivity() {
         setContentView(R.layout.activity_menu)
     }
     public fun menuTache(view: View) {
-        startActivity(Intent(this, TacheActivity::class.java))
+        startActivity(Intent(this, menuTacheActivity::class.java))
     }
     public fun menuProjet(view: View) {
         startActivity(Intent(this, MenuProjetActivity::class.java))
@@ -20,6 +20,6 @@ class MenuActivity : AppCompatActivity() {
         startActivity(Intent(this, MenuCollabActivity::class.java))
     }
     public fun menuSuivi(view: View) {
-        startActivity(Intent(this, MenuCollabActivity::class.java))
+        startActivity(Intent(this, menuSuiviActivity::class.java))
     }
 }

@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.fbapplication.models.Projet
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -60,8 +61,10 @@ class listeProjetActivity : AppCompatActivity()
             var tblEml = arrayOf<String>()
             var tblName = arrayOf<String>()
             var imageId = arrayOf<Int>()
+
             override fun onDataChange(snapshot: DataSnapshot)
             {
+
                 for (i in snapshot.children) {
                     i.child("Projet").children.forEach {
                         it.children.forEach {
