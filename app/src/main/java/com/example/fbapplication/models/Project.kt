@@ -1,7 +1,6 @@
 package com.example.fbapplication.models
 
-data class Projet(
-    var ID : String,
+data class Project(
     var PROJET : String,
     var DESCRIPTION1 : String,
     var DESCRIPTION2 : String,

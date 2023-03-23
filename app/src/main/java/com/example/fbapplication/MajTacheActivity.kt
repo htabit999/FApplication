@@ -7,7 +7,6 @@ import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import com.example.fbapplication.models.Projet
 import com.example.fbapplication.models.Tache
 import com.google.firebase.database.FirebaseDatabase
 

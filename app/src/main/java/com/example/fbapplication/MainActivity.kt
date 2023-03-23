@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
         }
     public fun gotoReg(view: View) {
-            startActivity(Intent(this, RegistrationActivity::class.java))
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
 
 }

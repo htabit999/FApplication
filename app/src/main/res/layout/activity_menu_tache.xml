@@ -15,6 +15,7 @@
         android:layout_marginEnd="145dp"
         android:text="Menu Taches"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,37 +50,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/listeT_button"
-        app:cornerRadius="240dp"/>
-
-    <Button
-        android:id="@+id/suppT_button"
-        android:layout_width="379dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:onClick="supTache"
-        android:text="Supprimer une tache"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/modT_button"
-        app:cornerRadius="240dp"/>
-
-    <Button
-        android:id="@+id/modT_button"
-        android:layout_width="379dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:onClick="modTache"
-        android:text="Modifier une tache"
-        app:layout_constraintBottom_toTopOf="@+id/suppT_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AjoutT_button"
-        app:layout_constraintVertical_bias="0.0"
         app:cornerRadius="240dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

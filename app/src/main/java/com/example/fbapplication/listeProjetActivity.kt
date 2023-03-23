@@ -1,18 +1,12 @@
 package com.example.fbapplication
 
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.ArrayAdapter
 import android.widget.ListView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.fbapplication.models.Projet
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import java.security.AccessController.getContext
 
 class listeProjetActivity : AppCompatActivity()
 {
@@ -27,7 +21,7 @@ class listeProjetActivity : AppCompatActivity()
         android.util.Log.d(TAG, "onCreate")
         setContentView(R.layout.activity_liste_projet)
         //var db = FirebaseDatabase.getInstance().getReference("projet-4f405")
-        var listeEml=readDataFB()
+        var listeEml= readDataFB()
                 val listView = findViewById<ListView>(R.id.listView) as ListView
                 val myListAdapter = listeAdapter(this, tblName, tblEml, imageId)
                 listView.adapter == myListAdapter

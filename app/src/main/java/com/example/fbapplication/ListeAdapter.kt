@@ -1,14 +1,12 @@
 package com.example.fbapplication
 
 import android.app.Activity
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import com.google.firebase.database.ValueEventListener
+import com.example.fbapplication.R
 
 class listeAdapter(private val context: Activity, private val title: Array<String>, private val description: Array<String>, private val imgid: Array<Int>)
     : ArrayAdapter<String>(context, R.layout.custom_list, title) {
@@ -19,8 +17,10 @@ class listeAdapter(private val context: Activity, private val title: Array<Strin
         val titleText = rowView.findViewById(R.id.title) as TextView
         val imageView = rowView.findViewById(R.id.icon) as ImageView
         val subtitleText = rowView.findViewById(R.id.description) as TextView
+        //Toast.makeText(this@listeAdapter, "Titre = " + title[position], Toast.LENGTH_LONG).show()
         titleText.text = title[position]
         imageView.setImageResource(imgid[position])
+
         subtitleText.text = description[position]
         return rowView
     }

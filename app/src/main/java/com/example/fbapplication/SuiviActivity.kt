@@ -31,7 +31,7 @@ class SuiviActivity : AppCompatActivity() {
         val TAG = javaClass.simpleName
         setContentView(R.layout.activity_suivi)
         dataList = mutableListOf()
-        listView = findViewById(R.id.listeView )
+        listView = findViewById(R.id.listeView)
         ref= FirebaseDatabase.getInstance().getReference( "projet-4f405")
         ref.addValueEventListener(object : ValueEventListener
         {
@@ -113,7 +113,7 @@ class SuiviActivity : AppCompatActivity() {
                         val itemid = listeid[position]
                         val itemav = listeav[position]
                         val itemp = listep[position]
-                        var intent : Intent = Intent(applicationContext,detSuiviActivity::class.java)
+                        var intent : Intent = Intent(applicationContext, detSuiviActivity::class.java)
                         var projet=adapterView.getItemAtPosition(position).toString()
                         intent.putExtra("projet",itemp)
                         intent.putExtra("description1",itemdesc1)

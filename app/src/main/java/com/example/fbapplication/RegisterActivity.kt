@@ -11,21 +11,19 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-class RegistrationActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
     private var dbf = Firebase.firestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_registration)
+        setContentView(R.layout.activity_register)
         auth = FirebaseAuth.getInstance()
     }
     public fun registerUser(view: View) {
-
         var email: String = findViewById<EditText>(R.id.email_edit_text).text.toString()
         var password: String = findViewById<EditText>(R.id.password_edit_text).text.toString()
         var nom: String = findViewById<EditText>(R.id.editTextNom).text.toString()
         var prenom: String = findViewById<EditText>(R.id.editTextPrenom).text.toString()
-
         val user = HashMap<String, Any>()
         user["Email"] = email
         user["Nom"] = nom
@@ -34,21 +32,12 @@ class RegistrationActivity : AppCompatActivity() {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
+                    Toast.makeText(this, "User added ", Toast.LENGTH_LONG).show()
                     addUser()
-                    //dbf.collection("Collaborateur")
-                    //   .document(nom)
-                    //   .set(user)
-                    //   .addOnSuccessListener {
-                    //        Toast.makeText(this, "Data added ", Toast.LENGTH_LONG).show()
-                    //     startActivity(Intent(this, LoginActivity::class.java))
-                    //    }
-                    //    .addOnFailureListener {
-                    //        Toast.makeText(this, " Data not added ", Toast.LENGTH_LONG).show()
-                    //    }
-                    //    Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show()
-                    //    startActivity(Intent(this, LoginActivity::class.java))
-                //} else {
-                //    Toast.makeText(this, "An error occurred", Toast.LENGTH_SHORT).show()
+                }
+                else
+                {
+                    Toast.makeText(this, "User not added ", Toast.LENGTH_LONG).show()
                 }
             }
     }
@@ -68,7 +57,7 @@ class RegistrationActivity : AppCompatActivity() {
             .document(nom).set(add)
             .addOnSuccessListener {
                 Toast.makeText(this, "Data added ", Toast.LENGTH_LONG).show()
-                startActivity(Intent(this, MenuProjetActivity::class.java))
+                startActivity(Intent(this, MainActivity::class.java))
             }
             .addOnFailureListener {
                 Toast.makeText(this, " Data not added ", Toast.LENGTH_LONG).show()

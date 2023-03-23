@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
 class LoginActivity : AppCompatActivity() {
-
+    //var user:String="Hassan"
     lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,13 +22,17 @@ class LoginActivity : AppCompatActivity() {
     public fun loginUser(view: View) {
         var email: String = findViewById<EditText>(R.id.login_email_edit_text).text.toString()
         var password: String = findViewById<EditText>(R.id.login_password_edit_text).text.toString()
-        if (email != null || password != null )
+        if (!email.isEmpty() || !password.isEmpty() )
         {
             auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, MenuActivity::class.java))
+                    val intent: Intent =  Intent(applicationContext, MenuActivity::class.java)
+                    intent.putExtra("user", email)
+                    startActivity(intent)
+                    //Toast.makeText(this, "Email : " + email, Toast.LENGTH_SHORT).show()
+                    //startActivity(Intent(this, MenuActivity::class.java))
                 } else {
                     Toast.makeText(this, "Unable to login. Check your input or try again later", Toast.LENGTH_SHORT).show()
                 }
@@ -38,5 +42,8 @@ class LoginActivity : AppCompatActivity() {
         {
             Toast.makeText(this, "Merci de remplir les champs", Toast.LENGTH_SHORT).show()
         }
+    }
+    public fun gotoReg(view: View) {
+        startActivity(Intent(this, RegistrationActivity::class.java))
     }
 }

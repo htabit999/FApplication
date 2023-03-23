@@ -79,7 +79,7 @@ class detSuiviActivity : AppCompatActivity() {
                                     listest = addElement(listest, it.value as String)
                                 }
                                 if (it.key == "avancement") {
-                                    listei = addElement(listei,  R.drawable.d)
+                                    listei = addElement(listei, R.drawable.d)
                                     listeav = addElement(listeav, it.getValue().toString().toInt())
                                 }
                             }
@@ -119,7 +119,7 @@ class detSuiviActivity : AppCompatActivity() {
                 val myListAdapter =
                     listeAdapterDetSuivi(this@detSuiviActivity, listetN, listecN, listesN, listeiN)
                 listView.adapter = myListAdapter
-                    var intent : Intent = Intent(applicationContext,listeAdapterSuivi::class.java)
+                    var intent : Intent = Intent(applicationContext, listeAdapterSuivi::class.java)
                     intent.putExtra("projet", nprj)
             }
             var listet = arrayOf<String>()

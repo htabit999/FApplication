@@ -14,7 +14,7 @@ public fun addTache(view: View) {
     startActivity(Intent(this, TacheActivity::class.java))
 }
 public fun listeTache(view: View) {
-    startActivity(Intent(this,listeTacheActivity::class.java))
+    startActivity(Intent(this, listeTacheActivity::class.java))
 }
 public fun suppTache(view: View) {
     startActivity(Intent(this, TacheActivity::class.java))

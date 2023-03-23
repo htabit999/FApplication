@@ -14,7 +14,12 @@ class MenuProjetActivity : AppCompatActivity() {
             startActivity(Intent(this, ProjetActivity::class.java))
         }
         public fun listeProjet(view: View) {
-            startActivity(Intent(this, DataActivity::class.java))
+            var intent1 :Intent= getIntent()
+            var user = intent1.getStringExtra("user").toString()
+            //Toast.makeText(this@MenuProjetActivity, "USER2 : " + user, Toast.LENGTH_LONG).show()
+            val intent: Intent =  Intent(applicationContext, DataFSActivity::class.java)
+            intent.putExtra("user", user)
+            startActivity(intent)
         }
         public fun suppProjet(view: View) {
             startActivity(Intent(this, DataActivity::class.java))

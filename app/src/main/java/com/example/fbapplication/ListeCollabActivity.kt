@@ -4,10 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ListView
-import com.example.fbapplication.R.id.listeCView
 import com.example.fbapplication.models.Collaborateur
-import com.example.fbapplication.models.Projet
-import com.example.fbapplication.models.Tache
 import com.google.firebase.database.*
 
 class listeCollabActivity : AppCompatActivity() {
@@ -28,16 +25,22 @@ class listeCollabActivity : AppCompatActivity() {
         val TAG = javaClass.simpleName
         setContentView(R.layout.activity_liste_collab)
         dataList = mutableListOf()
-        listView = findViewById(R.id.listeCView )
+        listView = findViewById(R.id.listeCView)
         ref = FirebaseDatabase.getInstance().getReference("projet-4f405")
-        ref.addValueEventListener(object : ValueEventListener {
+        ref.addValueEventListener(object : ValueEventListener
+        {
             val collabList = arrayListOf<Collaborateur>()
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot!!.exists()) {
+            override fun onDataChange(snapshot: DataSnapshot)
+            {
+                if (snapshot!!.exists())
+                {
                     dataList.clear()
-                    for (e in snapshot.children) {
-                        e.child("Collaborateur").children.forEach() {
-                            it.children.forEach {
+                    for (e in snapshot.children)
+                    {
+                        e.child("Collaborateur").children.forEach()
+                        {
+                            it.children.forEach()
+                            {
                                 if (it.key == "idc") {
                                     listei = addElement(listei, R.drawable.photo)
                                     listeid = addElement(listeid, it.value as String)
@@ -84,6 +87,10 @@ class listeCollabActivity : AppCompatActivity() {
                         startActivity(intent)
                     }
                 }
+
+                val lnom = arrayOf<String>()
+                val lprenom = arrayOf<String>()
+                val listei = arrayOf<Int>()
 
                 fun onCancelled(error: DatabaseError) {
                     TODO("Not yet implemented")

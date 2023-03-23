@@ -4,11 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal">
+
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center" >
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/icon"
@@ -30,7 +31,7 @@
                 android:layout_marginLeft="15dp"
                 android:text="Titre"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -41,6 +42,17 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="5dp"
                 android:text="Une description du projet consiste a faire"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:text="Status"
+                android:textColor="?android:attr/colorActivatedHighlight"
                 android:textSize="16sp" />
 
         </LinearLayout>

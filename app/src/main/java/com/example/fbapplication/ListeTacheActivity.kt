@@ -4,8 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ListView
-import android.widget.Toast
-import com.example.fbapplication.R.id.listeTView
 import com.example.fbapplication.models.Projet
 import com.example.fbapplication.models.Tache
 import com.google.firebase.database.*
@@ -100,7 +98,7 @@ class listeTacheActivity : AppCompatActivity() {
                         val itempr = listepr[position]
                         val itemav = listeav[position]
 
-                        var intent : Intent = Intent(applicationContext,majTacheActivity::class.java)
+                        var intent : Intent = Intent(applicationContext, majTacheActivity::class.java)
                         var tache=adapterView.getItemAtPosition(position).toString()
                         intent.putExtra("tache",tache)
                         intent.putExtra("description1",itemdesc1)
@@ -115,6 +113,11 @@ class listeTacheActivity : AppCompatActivity() {
                         startActivity(intent)
                     }
                 }
+                val listet = arrayOf<String>()
+                val listed1 = arrayOf<String>()
+                val listecol = arrayOf<Int>()
+                val listest = arrayOf<Int>()
+
                 fun onCancelled(error: DatabaseError) {
                     TODO("Not yet implemented")
                 }

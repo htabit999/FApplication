@@ -51,7 +51,7 @@ class PrjActivity : AppCompatActivity() {
                     listView.setOnItemClickListener()
                     {
                             adapterView, view, position, id ->
-                        var intent : Intent = Intent(applicationContext,majProjetActivity::class.java)
+                        var intent : Intent = Intent(applicationContext, majProjetActivity::class.java)
                         var projet=adapterView.getItemAtPosition(position).toString()
                         //Toast.makeText(this@DataActivity, "Click on item at ", Toast.LENGTH_LONG).show()
                     }

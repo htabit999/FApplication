@@ -8,7 +8,6 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.example.fbapplication.models.Collaborateur
-import com.example.fbapplication.models.Tache
 import com.google.firebase.database.FirebaseDatabase
 
 class majCollabActivity : AppCompatActivity() {
