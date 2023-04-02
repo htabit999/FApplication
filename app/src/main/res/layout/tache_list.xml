@@ -3,12 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+     android:background="@drawable/lineareborder">
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center" >
+        android:background="@drawable/filter_spinner_dropdown_bg"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/title"
@@ -35,7 +37,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="5dp"
                 android:text="Description du projet "
-                android:textColor="@color/teal_200"
+                android:textColor="@color/design_default_color_on_secondary"
                 android:textSize="16sp" />
             <TextView
                 android:id="@+id/collaborateur"

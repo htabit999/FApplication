@@ -28,11 +28,11 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
-                    val intent: Intent =  Intent(applicationContext, MenuActivity::class.java)
+                    //val intent: Intent =  Intent(applicationContext, ImageActivity::class.java)
                     intent.putExtra("user", email)
-                    startActivity(intent)
+                    //startActivity(intent)
                     //Toast.makeText(this, "Email : " + email, Toast.LENGTH_SHORT).show()
-                    //startActivity(Intent(this, MenuActivity::class.java))
+                    startActivity(Intent(this, MenuActivity::class.java))
                 } else {
                     Toast.makeText(this, "Unable to login. Check your input or try again later", Toast.LENGTH_SHORT).show()
                 }

@@ -13,7 +13,10 @@ class menuSuiviActivity : AppCompatActivity() {
     public fun listeSuivi(view: View) {
         startActivity(Intent(this, SuiviActivity::class.java))
     }
-    public fun listeTaches(view: View) {
-        startActivity(Intent(this, SuiviActivity::class.java))
+    public fun suiviTaches(view: View) {
+        startActivity(Intent(this, SuiviTacheTActivity::class.java))
+    }
+    public fun retour(view:View){
+        startActivity(Intent(this, MenuActivity::class.java))
     }
 }

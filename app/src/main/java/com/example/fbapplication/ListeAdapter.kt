@@ -20,7 +20,6 @@ class listeAdapter(private val context: Activity, private val title: Array<Strin
         //Toast.makeText(this@listeAdapter, "Titre = " + title[position], Toast.LENGTH_LONG).show()
         titleText.text = title[position]
         imageView.setImageResource(imgid[position])
-
         subtitleText.text = description[position]
         return rowView
     }

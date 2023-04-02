@@ -27,4 +27,7 @@ class MenuProjetActivity : AppCompatActivity() {
         public fun modProjet(view: View) {
             startActivity(Intent(this, DataActivity::class.java))
         }
-    }
+        public fun Retour(view: View) {
+        startActivity(Intent(this, MenuActivity::class.java))
+        }
+}

@@ -20,7 +20,7 @@ class MenuActivity : AppCompatActivity() {
         //
     }
     public fun menuTache(view: View) {
-        startActivity(Intent(this, menuTacheActivity::class.java))
+        startActivity(Intent(this, MenuTacheActivity::class.java))
     }
     public fun menuProjet(view: View) {
         //val intent: Intent =  Intent(applicationContext, MenuActivity::class.java)
@@ -41,5 +41,8 @@ class MenuActivity : AppCompatActivity() {
     }
     public fun menuSuivi(view: View) {
         startActivity(Intent(this, menuSuiviActivity::class.java))
+    }
+    public fun Retour(view: View) {
+        startActivity(Intent(this, MainActivity::class.java))
     }
 }

@@ -2,194 +2,121 @@ package com.example.fbapplication
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import com.example.fbapplication.BuildConfig.DEBUG
 import com.example.fbapplication.models.Projet
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.firestore.*
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
 
-class ProjetActivity : AppCompatActivity()
-{
-    private lateinit var db : DatabaseReference
-    private lateinit var spinner : Spinner
+class ProjetActivity : AppCompatActivity() {
+    private lateinit var db: DatabaseReference
+    private lateinit var spinner: Spinner
     private var dbf = Firebase.firestore
-    //var listeid = arrayOf<String>()
-    //var collaborateur=mutableListOf<String>("--- Choisir un collaborateur ---")
-    //var collaborateur=mutableListOf<String>()
-    var auth: FirebaseAuth= FirebaseAuth.getInstance()
+    var auth: FirebaseAuth = FirebaseAuth.getInstance()
+    lateinit var nomp: String
 
     @SuppressLint("RestrictedApi")
-    override fun onCreate(savedInstanceState: Bundle?)
-    {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_projet)
-        db= FirebaseDatabase.getInstance().getReference("projet-4f405")
-        //var spinner : Spinner
-        //val dataList = collaborateur.toMutableList()
-        var list = ArrayList<String>()
-        //nouveau code liste deroulane
-        dbf.collection("Collaborateur")
-            .get()
-            .addOnCompleteListener {
-                if (it.isSuccessful)
-                {
-                   for (document in it.result)
-                   {
-                       list.add (document.data.getValue("Nom") as String)
-                       //list.add (    document.data.getValue("Prenom") as String)
-                       //list.add (   document.data.getValue("Email") as String)
-                   }
-                }
-                //Toast.makeText(this@ProjetActivity, list[0], Toast.LENGTH_SHORT).show()
-                // ancien code liste deroulane
-        //db.addValueEventListener(object : ValueEventListener
-        //{
-          //  override fun onDataChange(snapshot: DataSnapshot)
-            //{
-              //  if (snapshot!!.exists()) {
-                //    dataList.clear()
-                 //   for (e in snapshot.children)
-                   // {
-          //              e.child("Collaborateur").children.forEach() {
-        //                    it.children.forEach {
-            //                    if (it.key == "idc") {
-              //                      listeid = addElement(listeid, it.value as String)
-                //                }
-                  //             if (it.key == "nom") {
-                   //                 collaborateur.add( it.value as String )
-                   //                 //dataList.add(it.value as String)
-                                    //Toast.makeText(this@ProjetActivity,it.value as String , Toast.LENGTH_SHORT).show()
-                     //           }
-                       //     }
-                        //}
-                    //}
-                //}
-            //}
-
-                spinner = findViewById(R.id.spinner)
-                val adapter=ArrayAdapter(this,android.R.layout.simple_list_item_1,list)
-                spinner.adapter=adapter
-                spinner.setOnItemSelectedListener (object : AdapterView.OnItemSelectedListener
-                {
-                    override fun onItemSelected (
-                        parent : AdapterView<*>?,
-                        view:View?,
-                        position:Int,
-                        id: Long
-                    ) {
-                        val selecetedItem = list[position]
-                        if (selecetedItem != "--- Choisir un collaborateur ---") {
-                            val chef = this@ProjetActivity.findViewById(R.id.chef_edit_text) as TextView
-                            chef.text = selecetedItem
-
-                        } else {
-                            Toast.makeText(
-                                this@ProjetActivity,
-                                "Choisir un collaborateur",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                        spinner.visibility = View.INVISIBLE
-                    }
-                    override fun onNothingSelected(p0: AdapterView<*>?) {
-                        TODO("Not yet implemented")
-                    }
-
-                    fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-            })
-            //
-
-        }
+        val nprj = intent.getStringExtra("projet")
+        val d1 = intent.getStringExtra("description1")
+        val st = intent.getStringExtra("status")
+        val dd = intent.getStringExtra("dated")
+        val df = intent.getStringExtra("datef")
+        val av = intent.getStringExtra("av")
+        val prj = this.findViewById(R.id.nom_edit_text) as TextView
+        val des1 = this.findViewById(R.id.description1_edit_text) as TextView
+        val dtd = this.findViewById(R.id.editTextDateD) as TextView
+        val dtf = this.findViewById(R.id.editTextDateF) as TextView
+        val sta = this.findViewById(R.id.statusP_edit_text) as TextView
+        val avc = this.findViewById(R.id.editTextAvc) as TextView
+        prj.text = nprj
+        des1.text = d1
+        dtd.text = dd
+        dtf.text = df
+        sta.text = st
+        avc.text = av
     }
 
-    public fun listecolab(view:View)
-    {
-      spinner.visibility= View.VISIBLE
-    }
+    public fun addFSProjet(view: View) {
+        val user = FirebaseAuth.getInstance().currentUser!!.uid
+        var namep: String = findViewById<EditText>(R.id.nom_edit_text).text.toString()
+        var statusp: String = findViewById<EditText>(R.id.statusP_edit_text).text.toString()
+        var datedp: String = findViewById<EditText>(R.id.editTextDateD).text.toString()
+        var datefp: String = findViewById<EditText>(R.id.editTextDateF).text.toString()
+        var descr1p: String = findViewById<EditText>(R.id.description1_edit_text).text.toString()
+        var avance: String = findViewById<EditText>(R.id.editTextAvc).text.toString()
 
-     public fun addFSProjet(view : View){
-         val user = FirebaseAuth.getInstance().currentUser!!.uid
-         var namep: String = findViewById<EditText>(R.id.nomp_edit_text).text.toString()
-         var chef : String = findViewById<EditText>(R.id.chef_edit_text).text.toString()
-         var statusp : String = findViewById<EditText>(R.id.statusP_edit_text).text.toString()
-         var datedp : String = findViewById<EditText>(R.id.editTextPDateD).text.toString()
-         var datefp : String = findViewById<EditText>(R.id.editTextPDateF).text.toString()
-         var descr1p : String = findViewById<EditText>(R.id.descriptionp1_edit_text).text.toString()
-         var descr2p : String = findViewById<EditText>(R.id.descriptionp2_edit_text).text.toString()
-         var avance : String = findViewById<EditText>(R.id.editTextAvc).text.toString()
-       if (legalDoB(datedp))
-        {
-           Toast.makeText(this, "Date correcte", Toast.LENGTH_SHORT).show()
-        }
-         val add = HashMap<String, Any>()
-         add["Projet"] = namep
-         add["Description1"] = descr1p
-         add["Description2"] = descr2p
-         add["Status"] = statusp
-         add["datedeb"] = datedp
-         add["Avancement"] = avance
-         add["datefin"] = datefp
-         add["Chef"] = chef
-         add["USERID"] = user
-         var idp : String = dbf.collection("Projet").id
-         dbf.collection("Projet")
-             .document(namep).set(add)
-             //.add(add)
-             .addOnSuccessListener {
-                 Toast.makeText(this, "Data added ", Toast.LENGTH_LONG).show()
-                 startActivity(Intent(this, MenuProjetActivity::class.java))
-             }
-             .addOnFailureListener {
-                 Toast.makeText(this, " Data not added ", Toast.LENGTH_LONG).show()
-             }
-         return
-     }
-
-     public fun addProjet(view: View) {
-         val user = FirebaseAuth.getInstance().currentUser!!.uid
-         Toast.makeText(this, user, Toast.LENGTH_SHORT).show()
-
-         var namep: String = findViewById<EditText>(R.id.nomp_edit_text).text.toString()
-         var chef : String = findViewById<EditText>(R.id.chef_edit_text).text.toString()
-         var statusp : String = findViewById<EditText>(R.id.statusP_edit_text).text.toString()
-         var datedp : String = findViewById<EditText>(R.id.editTextPDateD).text.toString()
-         var datefp : String = findViewById<EditText>(R.id.editTextPDateF).text.toString()
-         var descr1p : String = findViewById<EditText>(R.id.descriptionp1_edit_text).text.toString()
-         var descr2p : String = findViewById<EditText>(R.id.descriptionp2_edit_text).text.toString()
-         var avance : String = findViewById<EditText>(R.id.editTextAvc).text.toString()
-        if (namep.isEmpty() || chef.isEmpty() || statusp.isEmpty() || datedp.isEmpty() || datefp.isEmpty() || descr1p.isEmpty() || descr2p.isEmpty() || avance.isEmpty()  )
-        {
+        if (namep.isEmpty() || statusp.isEmpty() || datedp.isEmpty() || datefp.isEmpty() || descr1p.isEmpty() || avance.isEmpty()) {
             Toast.makeText(this, "Il faut remplir tous les champs", Toast.LENGTH_SHORT).show()
+        } else {
+            if (legalDoB(datedp) && legalDoB(datefp)) {
+                //Toast.makeText(this, "Date correcte", Toast.LENGTH_SHORT).show()
+                val add = HashMap<String, Any>()
+                add["Projet"] = namep
+                add["Description1"] = descr1p
+                add["Status"] = statusp
+                add["datedeb"] = datedp
+                add["Avancement"] = avance
+                add["datefin"] = datefp
+                add["USERID"] = user
+                var idp: String = dbf.collection("Projet").id
+                dbf.collection("Projet")
+                    .document(namep).set(add)
+                    //.add(add)
+                    .addOnSuccessListener {
+                        Toast.makeText(this, "Data added ", Toast.LENGTH_LONG).show()
+                        startActivity(Intent(this, MenuProjetActivity::class.java))
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(this, " Data not added ", Toast.LENGTH_LONG).show()
+                    }
+                return
+            }
+            else
+            {
+                Toast.makeText(this, "Date incorrecte ", Toast.LENGTH_LONG).show()
+            }
         }
-        else
-        {
-            var idp : String = db.push().key!!
-            var av=avance.toInt()
-            val projet = Projet(idp,namep, descr1p, descr2p, chef, datedp, datefp, statusp,user,av)
-            db.child("Base").child("Projet").child(idp).setValue(projet)
+    }
+    public fun addProjet(view: View) {
+        val user = FirebaseAuth.getInstance().currentUser!!.uid
+        Toast.makeText(this, user, Toast.LENGTH_SHORT).show()
+
+        var namep: String = findViewById<EditText>(R.id.nom_edit_text).text.toString()
+        var statusp: String = findViewById<EditText>(R.id.statusP_edit_text).text.toString()
+        var datedp: String = findViewById<EditText>(R.id.editTextDateD).text.toString()
+        var datefp: String = findViewById<EditText>(R.id.editTextDateF).text.toString()
+        var descr1p: String = findViewById<EditText>(R.id.description1_edit_text).text.toString()
+        var avance: String = findViewById<EditText>(R.id.editTextAvc).text.toString()
+        if (namep.isEmpty() || statusp.isEmpty() || datedp.isEmpty() || datefp.isEmpty() || descr1p.isEmpty() || avance.isEmpty()) {
+            Toast.makeText(this, "Il faut remplir tous les champs", Toast.LENGTH_SHORT).show()
+        } else {
+            //var idp : String = db.push().key!!
+            var av = avance.toInt()
+            val projet = Projet(namep, descr1p, datedp, datefp, statusp, user, av)
+            db.child("Base").child("Projet").child(namep).setValue(projet)
                 .addOnCompleteListener {
                     Toast.makeText(this, "Data inserted successfully", Toast.LENGTH_LONG).show()
                 }.addOnFailureListener { err ->
                     Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_LONG).show()
                 }
-            startActivity(Intent(this, DataActivity::class.java))
+            startActivity(Intent(this, DataFSActivity::class.java))
         }
     }
-    fun legalDoB( dobTextId : String): Boolean {
+
+    fun legalDoB(dobTextId: String): Boolean {
         val dobString = dobTextId.toString()
         val df = SimpleDateFormat("MM/dd/yy")
         try {
@@ -201,5 +128,45 @@ class ProjetActivity : AppCompatActivity()
             return false
         }
         return false
+    }
+
+    public fun listeStatus(view: View) {
+        var namep: String = findViewById<EditText>(R.id.nom_edit_text).text.toString()
+        var statusp: String = findViewById<EditText>(R.id.statusP_edit_text).text.toString()
+        var datedp: String = findViewById<EditText>(R.id.editTextDateD).text.toString()
+        var datefp: String = findViewById<EditText>(R.id.editTextDateF).text.toString()
+        var descr1p: String = findViewById<EditText>(R.id.description1_edit_text).text.toString()
+        var avance: String = findViewById<EditText>(R.id.editTextAvc).text.toString()
+        val intent = Intent(this, listeActivity::class.java)
+        intent.putExtra("activity", "projet")
+        intent.putExtra("projet", namep)
+        intent.putExtra("description1", descr1p)
+        intent.putExtra("dated", datedp)
+        intent.putExtra("datef", datefp)
+        intent.putExtra("status", statusp)
+        intent.putExtra("av", avance)
+        startActivity(intent)
+    }
+
+    public fun listeAvance(view: View) {
+        var namep: String = findViewById<EditText>(R.id.nom_edit_text).text.toString()
+        var statusp: String = findViewById<EditText>(R.id.statusP_edit_text).text.toString()
+        var datedp: String = findViewById<EditText>(R.id.editTextDateD).text.toString()
+        var datefp: String = findViewById<EditText>(R.id.editTextDateF).text.toString()
+        var descr1p: String = findViewById<EditText>(R.id.description1_edit_text).text.toString()
+        var avance: String = findViewById<EditText>(R.id.editTextAvc).text.toString()
+        val intent = Intent(this, listeavActivity::class.java)
+        intent.putExtra("activity", "projet")
+        intent.putExtra("projet", namep)
+        intent.putExtra("description1", descr1p)
+        intent.putExtra("dated", datedp)
+        intent.putExtra("datef", datefp)
+        intent.putExtra("status", statusp)
+        intent.putExtra("av", avance)
+        startActivity(intent)
+    }
+    public fun retourMenu(view:View)
+    {
+            startActivity(Intent(this, MenuProjetActivity::class.java))
     }
 }

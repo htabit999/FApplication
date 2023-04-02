@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,6 +14,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FBApplication"
         tools:targetApi="31">
+        <activity
+            android:name=".SuiviTacheTActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SuiviTacheActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ImageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".listeprtActivity"
+            android:exported="false" />
+        <activity
+            android:name=".listesttActivity"
+            android:exported="false" />
+        <activity
+            android:name=".listeavtActivity"
+            android:exported="false" />
+        <activity
+            android:name=".listeavActivity"
+            android:exported="false" />
+        <activity
+            android:name=".listeActivity"
+            android:exported="false" />
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
@@ -27,9 +54,6 @@
             android:name=".barActivity"
             android:exported="false" />
         <activity
-            android:name=".viewcolActivity"
-            android:exported="false" />
-        <activity
             android:name=".listeCollabActivity"
             android:exported="false" />
         <activity
@@ -39,7 +63,7 @@
             android:name=".listeTacheActivity"
             android:exported="false" />
         <activity
-            android:name=".menuTacheActivity"
+            android:name=".MenuTacheActivity"
             android:exported="false" />
         <activity
             android:name=".PrjActivity"
@@ -81,13 +105,13 @@
             android:name=".ChatActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
-        <activity
             android:name=".RegistrationActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
