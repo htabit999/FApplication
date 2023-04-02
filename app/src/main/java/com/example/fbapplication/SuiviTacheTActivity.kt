@@ -6,8 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ListView
-import com.example.fbapplication.models.Project
-import com.example.fbapplication.models.Projet
+//import com.example.fbapplication.models.Project
+//import com.example.fbapplication.models.Projet
 import com.example.fbapplication.models.Tache
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -21,13 +21,13 @@ class SuiviTacheTActivity : AppCompatActivity() {
     {
         android.util.Log.d(ContentValues.TAG, "onCreate")
         super.onCreate(savedInstanceState)
-        val TAG = javaClass.simpleName
+        //val TAG = javaClass.simpleName
         setContentView(R.layout.activity_suivi_tache_tactivity)
         listView = findViewById(R.id.listeView)
         var list = ArrayList<Tache>()
         val user = FirebaseAuth.getInstance().currentUser!!.uid
-        val intent = intent
-        val projet = intent.getStringExtra("projet")
+        //val intent = intent
+        //val projet = intent.getStringExtra("projet")
         db.collection("Tache").whereEqualTo("USERID", user)
             .get()
             .addOnCompleteListener {
