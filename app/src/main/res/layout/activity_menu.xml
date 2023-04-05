@@ -38,7 +38,7 @@
 
     <Button
         android:id="@+id/collab_button"
-        android:layout_width="379dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="37dp"
@@ -53,7 +53,7 @@
 
     <Button
         android:id="@+id/projet_button"
-        android:layout_width="379dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
@@ -68,7 +68,7 @@
 
     <Button
         android:id="@+id/tache_button"
-        android:layout_width="379dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
@@ -82,7 +82,7 @@
 
     <Button
         android:id="@+id/suivi_button"
-        android:layout_width="379dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
@@ -97,7 +97,7 @@
 
     <Button
         android:id="@+id/retour_button"
-        android:layout_width="379dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"

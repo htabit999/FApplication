@@ -37,7 +37,7 @@
 
     <Button
         android:id="@+id/listeP_button"
-        android:layout_width="379dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="42dp"
@@ -52,7 +52,7 @@
 
     <Button
         android:id="@+id/AjoutP_button"
-        android:layout_width="379dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="21dp"
@@ -67,7 +67,7 @@
 
     <Button
         android:id="@+id/Retour_button"
-        android:layout_width="379dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="21dp"

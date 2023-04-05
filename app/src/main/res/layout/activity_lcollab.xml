@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DataFSActivity">
+    tools:context=".lCollabActivity">
 
     <TextView
         android:id="@+id/textView6"
@@ -13,7 +13,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="Liste des projets"
+        android:text="Les collaborateurs"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="40dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,13 +34,15 @@
         app:srcCompat="@drawable/ensaj" />
 
     <ListView
-        android:id="@+id/listeView"
-        android:layout_width="400dp"
-        android:layout_height="515dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="6dp"
+        android:id="@+id/listeTView"
+        android:layout_width="369dp"
+        android:layout_height="496dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
         android:divider="@color/black"
+        android:dividerHeight="2dp"
         android:entries="@array/posts"
         android:focusable="true"
         android:listSelector="@drawable/listedrawable"
@@ -54,10 +56,10 @@
         android:id="@+id/textView3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:text="Projet    Description Dates Status Taux Av."
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="16dp"
+        android:text="Nom   Prenom   Email   Role"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,8 +67,8 @@
 
     <ImageView
         android:id="@+id/imageView9"
-        android:layout_width="46dp"
-        android:layout_height="42dp"
+        android:layout_width="69dp"
+        android:layout_height="63dp"
         android:layout_marginStart="9dp"
         android:layout_marginTop="29dp"
         android:layout_marginEnd="44dp"
@@ -74,7 +76,5 @@
         app:layout_constraintEnd_toStartOf="@+id/imageView4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
-        app:srcCompat="?attr/homeAsUpIndicator" />
-
-
+        app:srcCompat="@android:drawable/ic_menu_revert" />
 </androidx.constraintlayout.widget.ConstraintLayout>

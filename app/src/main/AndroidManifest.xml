@@ -15,6 +15,12 @@
         android:theme="@style/Theme.FBApplication"
         tools:targetApi="31">
         <activity
+            android:name=".lCollabActivity"
+            android:exported="false" />
+        <activity
+            android:name=".listeroleActivity"
+            android:exported="false" />
+        <activity
             android:name=".SuiviTacheTActivity"
             android:exported="false" />
         <activity

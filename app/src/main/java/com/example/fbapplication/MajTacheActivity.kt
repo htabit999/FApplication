@@ -22,6 +22,7 @@ class majTacheActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maj_tache)
         val intent = intent
+
         val tch = intent.getStringExtra("tache")
         val d1 = intent.getStringExtra("description1")
         val st = intent.getStringExtra("status")

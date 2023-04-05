@@ -20,6 +20,12 @@
     <string name="how_dou_you_feel_today">How dou you feel today?</string>
     <string name="feelings">Feelings</string>
 
+    <string-array name="role">
+        <item>Administrateur</item>
+        <item>Chef de projet</item>
+        <item>Collaborateur</item>
+    </string-array>
+
     <string-array name="feelings">
         <item>Ouvert</item>
         <item>En cours</item>
