@@ -89,7 +89,7 @@ class LoginActivity : AppCompatActivity() {
                     } else {
                         if (liste[0].ROLE == "Collaborateur") {
                             val intent: Intent =
-                                Intent(applicationContext, MenuActivity::class.java)
+                                Intent(applicationContext, MenuColActivity::class.java)
                                 intent.putExtra("role", liste[0].ROLE)
                                 intent.putExtra("nom", liste[0].NOM)
                                 intent.putExtra("user", liste[0].UID)

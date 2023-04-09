@@ -15,6 +15,18 @@
         android:theme="@style/Theme.FBApplication"
         tools:targetApi="31">
         <activity
+            android:name=".majTacheColActivity"
+            android:exported="false" />
+        <activity
+            android:name=".listeTacheColActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SuiviTacheColActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MenuColActivity"
+            android:exported="false" />
+        <activity
             android:name=".SuiviTacheAdmActivity"
             android:exported="false" />
         <activity
