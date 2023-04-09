@@ -28,7 +28,7 @@ class listeroleActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_listeprt)
         val intent = intent
-        val nom = intent.getStringExtra("nom")
+        val nomc = intent.getStringExtra("nomc")
         val prenom = intent.getStringExtra("prenom")
         val email = intent.getStringExtra("email")
         val psw = intent.getStringExtra("psw")
@@ -43,24 +43,38 @@ class listeroleActivity : AppCompatActivity() {
             val value = arrayAdapter.getItem(position) ?: ""
             val act=intent.getStringExtra("activity")
             if (act=="registeractivity") {
+                val role = intent.getStringExtra("role")
+                val nom = intent.getStringExtra("nom")
+                val user = intent.getStringExtra("user")
                 var intent : Intent= Intent(applicationContext,RegisterActivity::class.java)
                 intent.putExtra("role", value.toString())
-                intent.putExtra("nom", nom)
+                intent.putExtra("nomc", nomc)
                 intent.putExtra("prenom", prenom)
                 intent.putExtra("email", email)
                 intent.putExtra("psw",psw)
                 intent.putExtra("rpsw", rpsw)
+                intent.putExtra("role", role)
+                intent.putExtra("nom", nom)
+                intent.putExtra("user", user)
                 startActivity(intent)
             }
             else
             {
+                var intent1 :Intent= getIntent()
+                val role = intent.getStringExtra("role")
+                val nom = intent.getStringExtra("nom")
+                val user = intent.getStringExtra("user")
                 var intent : Intent= Intent(applicationContext,CollabActivity::class.java)
                 intent.putExtra("role", value.toString())
-                intent.putExtra("nom", nom)
+                intent.putExtra("nomc", nomc)
                 intent.putExtra("prenom", prenom)
                 intent.putExtra("email", email)
                 intent.putExtra("psw",psw)
                 intent.putExtra("rpsw", rpsw)
+                intent.putExtra("nom", nom)
+                intent.putExtra("role", role)
+                intent.putExtra("nom", nom)
+                intent.putExtra("user", user)
                 startActivity(intent)
             }
         }

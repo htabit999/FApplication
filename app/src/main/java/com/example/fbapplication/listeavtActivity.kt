@@ -23,6 +23,8 @@ class listeavtActivity : AppCompatActivity() {
         val dd = intent.getStringExtra("dated")
         val df = intent.getStringExtra("datef")
         val av = intent.getStringExtra("av")
+        val col = intent.getStringExtra("col")
+        val nom = intent.getStringExtra("nom")
         binding = ActivityListeavtBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val feelings = resources.getStringArray(R.array.taux)
@@ -32,6 +34,9 @@ class listeavtActivity : AppCompatActivity() {
             val value = arrayAdapter.getItem(position) ?: ""
             val act=intent.getStringExtra("activity")
             if (act=="majtacheactivity") {
+                val role = intent.getStringExtra("role")
+                val nom = intent.getStringExtra("nom")
+                val user = intent.getStringExtra("user")
                 var intent : Intent= Intent(applicationContext, majTacheActivity::class.java)
                 intent.putExtra("projet", projet)
                 intent.putExtra("tache", tache)
@@ -40,10 +45,18 @@ class listeavtActivity : AppCompatActivity() {
                 intent.putExtra("datef",df)
                 intent.putExtra("status", st)
                 intent.putExtra("avancement", value.toString())
+                intent.putExtra("col", col)
+                intent.putExtra("role", role)
+                intent.putExtra("nom", nom)
+                intent.putExtra("user", user)
+
                 startActivity(intent)
             }
             else
             {
+                val role = intent.getStringExtra("role")
+                val nom = intent.getStringExtra("nom")
+                val user = intent.getStringExtra("user")
                 var intent : Intent= Intent(applicationContext, TacheActivity::class.java)
                 intent.putExtra("projet",projet)
                 intent.putExtra("tache", tache)
@@ -52,6 +65,10 @@ class listeavtActivity : AppCompatActivity() {
                 intent.putExtra("datef",df)
                 intent.putExtra("status", st)
                 intent.putExtra("avancement", value.toString())
+                intent.putExtra("col", col)
+                intent.putExtra("role", role)
+                intent.putExtra("nom", nom)
+                intent.putExtra("user", user)
                 startActivity(intent)
             }
         }

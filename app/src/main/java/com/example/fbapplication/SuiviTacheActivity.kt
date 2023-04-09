@@ -43,7 +43,8 @@ class SuiviTacheActivity : AppCompatActivity() {
                                 document.data.getValue("Projet") as String,
                                 document.data.getValue("Avancement").toString().toInt(),
                                 document.data.getValue("Status") as String,
-                                document.data.getValue("USERID") as String
+                                document.data.getValue("USERID") as String ,
+                                document.data.getValue("Collaborateur") as String
                             )
                         )
                     }
@@ -58,6 +59,13 @@ class SuiviTacheActivity : AppCompatActivity() {
     }
     public fun retourMenu(view: View)
     {
-        startActivity(Intent(this, SuiviActivity::class.java))
+        val role = intent.getStringExtra("role")
+        val nom = intent.getStringExtra("nom")
+        val user = intent.getStringExtra("user")
+        val intent: Intent =  Intent(applicationContext, SuiviActivity::class.java)
+        intent.putExtra("role", role)
+        intent.putExtra("nom", nom)
+        intent.putExtra("user", user)
+        startActivity(intent)
     }
 }

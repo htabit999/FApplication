@@ -8,38 +8,27 @@
     tools:context=".TacheActivity">
 
     <Button
-        android:id="@+id/retour_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:onClick="retourMenu"
-        android:text="Retour"
-        app:cornerRadius="240dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_button" />
-
-    <Button
         android:id="@+id/login_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="39dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="54dp"
         android:onClick="addTache"
         android:text="Ajouter"
         app:cornerRadius="240dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout8" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:text="Creer une tache"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -67,7 +56,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -181,14 +170,12 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout6"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         app:boxCollapsedPaddingTop="2dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -199,8 +186,29 @@
             android:id="@+id/editTextAvancementT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Etat avancement %"
-            android:editable="false" />
+            android:editable="false"
+            android:hint="Etat avancement %" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout8"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="24dp"
+        app:boxCollapsedPaddingTop="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout6">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextCollab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:hint="Collaborateur" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -209,7 +217,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="400dp"
+        android:layout_marginTop="370dp"
         android:layout_marginEnd="8dp"
         android:onClick="listeProjet"
         app:layout_constraintEnd_toEndOf="parent"
@@ -240,5 +248,31 @@
         app:layout_constraintStart_toEndOf="@+id/textInputLayout6"
         app:layout_constraintTop_toBottomOf="@+id/imageView7"
         app:srcCompat="@android:drawable/ic_menu_search" />
+
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="40dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="34dp"
+        android:onClick="retourMenu"
+        app:layout_constraintEnd_toStartOf="@+id/imageView4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:srcCompat="?attr/homeAsUpIndicator" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:onClick="listeCollab"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textInputLayout6"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8"
+        app:srcCompat="@android:drawable/ic_menu_search" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

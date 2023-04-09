@@ -44,21 +44,6 @@
         app:srcCompat="@drawable/ensaj" />
 
     <Button
-        android:id="@+id/launch_reg_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:onClick="gotoReg"
-        android:text="Register"
-        app:cornerRadius="240dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/launch_login_button" />
-
-    <Button
         android:id="@+id/launch_login_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

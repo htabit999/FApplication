@@ -8,5 +8,6 @@ data class Tache (
     var PROJET : String,
     var AVANCEMENT : Int,
     var STATUS : String,
-    var USERID : String
+    var USERID : String,
+    var COLLABORATEUR : String
 )

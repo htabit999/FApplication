@@ -80,7 +80,15 @@ class RegisterActivity : AppCompatActivity() {
             .document(nom).set(add)
             .addOnSuccessListener {
                 Toast.makeText(this, "Data added ", Toast.LENGTH_LONG).show()
-                startActivity(Intent(this, MenuCollabActivity::class.java))
+                val role = intent.getStringExtra("role")
+                val nom = intent.getStringExtra("nom")
+                val user = intent.getStringExtra("user")
+                val intent: Intent =  Intent(applicationContext, MenuCollabActivity::class.java)
+                intent.putExtra("role", role)
+                intent.putExtra("nom", nom)
+                intent.putExtra("user", user)
+                startActivity(intent)
+                //startActivity(Intent(this, MenuCollabActivity::class.java))
             }
             .addOnFailureListener {
                 Toast.makeText(this, " Data not added ", Toast.LENGTH_LONG).show()
@@ -89,18 +97,24 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     public fun listeRole(view: View) {
-        var nom: String = findViewById<EditText>(R.id.editTextNom).text.toString()
+        val role = intent.getStringExtra("role")
+        val nom = intent.getStringExtra("nom")
+        val user = intent.getStringExtra("user")
+        var name: String = findViewById<EditText>(R.id.editTextNom).text.toString()
         var prenom: String = findViewById<EditText>(R.id.editTextPrenom).text.toString()
         var email: String = findViewById<EditText>(R.id.email_edit_text).text.toString()
         var psw: String = findViewById<EditText>(R.id.password_edit_text).text.toString()
         var rpsw: String = findViewById<EditText>(R.id.re_password_edit_text).text.toString()
         val intent = Intent(this, listeroleActivity::class.java)
-        intent.putExtra("nom", nom)
+        intent.putExtra("nomc", name)
         intent.putExtra("prenom", prenom)
         intent.putExtra("email", email)
         intent.putExtra("psw", psw)
         intent.putExtra("rpsw", rpsw)
         intent.putExtra("activity", "registeractivity")
+        intent.putExtra("role", role)
+        intent.putExtra("nom", nom)
+        intent.putExtra("user", user)
         startActivity(intent)
     }
 }

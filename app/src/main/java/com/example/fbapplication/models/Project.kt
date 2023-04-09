@@ -7,5 +7,6 @@ data class Project(
     var DATEFIN : String,
     var STATUS : String,
     var USERID : String,
-    var AVANCEMENT : Int
+    var AVANCEMENT : Int,
+    var CHEF : String
 )

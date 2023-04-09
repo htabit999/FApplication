@@ -20,6 +20,7 @@ class listeActivity : AppCompatActivity() {
         val dd = intent.getStringExtra("dated")
         val df = intent.getStringExtra("datef")
         val av = intent.getStringExtra("av")
+        val ch = intent.getStringExtra("ch")
         val activite = intent.getStringExtra("activity")
         binding = ActivityListeBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -29,6 +30,9 @@ class listeActivity : AppCompatActivity() {
         binding.autoCompleteTextView.setOnItemClickListener { _, _, position, _ ->
             val value = arrayAdapter.getItem(position) ?: ""
             if (activite=="projet") {
+                val role = intent.getStringExtra("role")
+                val nom = intent.getStringExtra("nom")
+                val user = intent.getStringExtra("user")
                 var intent: Intent = Intent(applicationContext, ProjetActivity::class.java)
                 intent.putExtra("projet", nprj)
                 intent.putExtra("description1", d1)
@@ -36,9 +40,16 @@ class listeActivity : AppCompatActivity() {
                 intent.putExtra("datef",df)
                 intent.putExtra("status", value)
                 intent.putExtra("av", av)
+                intent.putExtra("ch", ch)
+                intent.putExtra("role", role)
+                intent.putExtra("nom", nom)
+                intent.putExtra("user", user)
                 startActivity(intent)
             }
             else {
+                val role = intent.getStringExtra("role")
+                val nom = intent.getStringExtra("nom")
+                val user = intent.getStringExtra("user")
                 var intent: Intent = Intent(applicationContext, majProjetActivity::class.java)
                 intent.putExtra("projet", nprj)
                 intent.putExtra("description1", d1)
@@ -46,6 +57,10 @@ class listeActivity : AppCompatActivity() {
                 intent.putExtra("datef",df)
                 intent.putExtra("status", value)
                 intent.putExtra("av", av)
+                intent.putExtra("ch", ch)
+                intent.putExtra("role", role)
+                intent.putExtra("nom", nom)
+                intent.putExtra("user", user)
                 startActivity(intent)
             }
         }

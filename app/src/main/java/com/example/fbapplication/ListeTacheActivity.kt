@@ -15,17 +15,13 @@ import com.google.firebase.ktx.Firebase
 
 class listeTacheActivity : AppCompatActivity() {
     lateinit var ref : DatabaseReference
-    //lateinit var dataList : MutableList<Projet>
     lateinit var listView: ListView
-    //private lateinit var tacheList: ArrayList<Tache>
     private var db = Firebase.firestore
-
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         val TAG = javaClass.simpleName
         setContentView(R.layout.activity_liste_tache)
-        //dataList = mutableListOf()
         listView = findViewById(R.id.listeTView)
         var list = ArrayList<Tache>()
         val user = FirebaseAuth.getInstance().currentUser!!.uid
@@ -44,8 +40,9 @@ class listeTacheActivity : AppCompatActivity() {
                                 document.data.getValue("Projet") as String,
                                 document.data.getValue("Avancement").toString().toInt(),
                                 document.data.getValue("Status") as String,
-                                document.data.getValue("USERID") as String
-                            )
+                                document.data.getValue("USERID") as String,
+                                document.data.getValue("Collaborateur") as String
+                                )
                         )
                     }
                 }
@@ -55,8 +52,11 @@ class listeTacheActivity : AppCompatActivity() {
                     listView.setOnItemClickListener()
                     {
                             adapterView, view, position, id ->
+                            val role = intent.getStringExtra("role")
+                            val nom = intent.getStringExtra("nom")
+                            val user = intent.getStringExtra("user")
                             var intent : Intent = Intent(applicationContext, majTacheActivity::class.java)
-                            var tache=adapterView.getItemAtPosition(position).toString()
+                            //var tache=adapterView.getItemAtPosition(position).toString()
                             intent.putExtra("tache", list[position].TACHE)
                             intent.putExtra("projet", list[position].PROJET)
                             intent.putExtra("description1", list[position].DESCRIPTION1)
@@ -65,6 +65,10 @@ class listeTacheActivity : AppCompatActivity() {
                             intent.putExtra("status", list[position].STATUS)
                             intent.putExtra("avancement", list[position].AVANCEMENT.toString())
                             intent.putExtra("id", list[position].USERID)
+                            intent.putExtra("col", list[position].COLLABORATEUR)
+                            intent.putExtra("role", role)
+                            intent.putExtra("nom", nom)
+                            intent.putExtra("user", user)
                             startActivity(intent)
                     }
                 }
@@ -74,6 +78,14 @@ class listeTacheActivity : AppCompatActivity() {
     }
     public fun retourMenu(view: View)
     {
-        startActivity(Intent(this, MenuTacheActivity::class.java))
+        val role = intent.getStringExtra("role")
+        val nom = intent.getStringExtra("nom")
+        val user = intent.getStringExtra("user")
+        val intent: Intent =  Intent(applicationContext, MenuTacheActivity::class.java)
+        intent.putExtra("role", role)
+        intent.putExtra("nom", nom)
+        intent.putExtra("user", user)
+        startActivity(intent)
+        //startActivity(Intent(this, MenuTacheActivity::class.java))
     }
 }

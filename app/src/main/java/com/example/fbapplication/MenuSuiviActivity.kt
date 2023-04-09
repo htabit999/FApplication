@@ -11,12 +11,34 @@ class menuSuiviActivity : AppCompatActivity() {
         setContentView(R.layout.activity_menu_suivi)
     }
     public fun listeSuivi(view: View) {
-        startActivity(Intent(this, SuiviActivity::class.java))
+        var nom = intent.getStringExtra("nom").toString()
+        var role = intent.getStringExtra("role").toString()
+        var user = intent.getStringExtra("user").toString()
+        var intent : Intent = Intent(applicationContext, SuiviActivity::class.java)
+        intent.putExtra("nom", nom)
+        intent.putExtra("role", role)
+        intent.putExtra("user", user)
+        startActivity(intent)
     }
     public fun suiviTaches(view: View) {
-        startActivity(Intent(this, SuiviTacheTActivity::class.java))
+        var nom = intent.getStringExtra("nom").toString()
+        var role = intent.getStringExtra("role").toString()
+        var user = intent.getStringExtra("user").toString()
+        var intent : Intent = Intent(applicationContext, SuiviTacheActivity::class.java)
+        intent.putExtra("nom", nom)
+        intent.putExtra("role", role)
+        intent.putExtra("user", user)
+        startActivity(intent)
     }
     public fun retour(view:View){
-        startActivity(Intent(this, MenuActivity::class.java))
+        var nom = intent.getStringExtra("nom").toString()
+        var role = intent.getStringExtra("role").toString()
+        var user = intent.getStringExtra("user").toString()
+        var intent : Intent = Intent(applicationContext, MenuActivity::class.java)
+        intent.putExtra("nom", nom)
+        intent.putExtra("role", role)
+        intent.putExtra("user", user)
+        startActivity(intent)
+
     }
 }

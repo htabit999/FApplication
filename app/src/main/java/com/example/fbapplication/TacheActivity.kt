@@ -30,6 +30,8 @@ class TacheActivity : AppCompatActivity() {
         val dd = intent.getStringExtra("dated")
         val df = intent.getStringExtra("datef")
         val av = intent.getStringExtra("avancement")
+        val cl = intent.getStringExtra("col")
+        val nom = intent.getStringExtra("nom")
         val tch = this.findViewById(R.id.nom_edit_text) as TextView
         val prj = this.findViewById(R.id.projet_edit_text) as TextView
         val des1 = this.findViewById(R.id.description1_edit_text) as TextView
@@ -37,6 +39,8 @@ class TacheActivity : AppCompatActivity() {
         val dtf = this.findViewById(R.id.editTextDateF) as TextView
         val sta = this.findViewById(R.id.status_edit_text) as TextView
         val avc = this.findViewById(R.id.editTextAvancementT) as TextView
+        val col = this.findViewById(R.id.editTextCollab) as TextView
+
         prj.text = projet
         des1.text = d1
         dtd.text = dd
@@ -44,6 +48,7 @@ class TacheActivity : AppCompatActivity() {
         sta.text = st
         avc.text = av
         tch.text=tache
+        col.text=cl
     }
 
     public fun addTache(view: View)
@@ -57,8 +62,9 @@ class TacheActivity : AppCompatActivity() {
         var descr1: String = findViewById<EditText>(R.id.description1_edit_text).text.toString()
         var avance: String = findViewById<EditText>(R.id.editTextAvancementT).text.toString()
         var projet: String = findViewById<EditText>(R.id.projet_edit_text).text.toString()
+        var collab: String = findViewById<EditText>(R.id.editTextCollab).text.toString()
 
-        if (name.isEmpty() ||  status.isEmpty() || dated.isEmpty() || datef.isEmpty() || descr1.isEmpty() || status.isEmpty() || avance.isEmpty() || projet.isEmpty() )
+        if (name.isEmpty() ||  status.isEmpty() || dated.isEmpty() || datef.isEmpty() || descr1.isEmpty() || status.isEmpty() || avance.isEmpty() || projet.isEmpty() || collab.isEmpty() )
         {
             Toast.makeText(this, "Il faut remplir tous les champs", Toast.LENGTH_SHORT).show()
         }
@@ -74,12 +80,18 @@ class TacheActivity : AppCompatActivity() {
                 add["datefin"] = datef
                 add["USERID"] = user
                 add["Projet"] = projet
+                add["Collaborateur"] = collab
+
                 var idp: String = dbf.collection("Projet").id
                 dbf.collection("Tache")
                     .document(name).set(add)
                     .addOnSuccessListener {
                         Toast.makeText(this, "Data added ", Toast.LENGTH_LONG).show()
-                        startActivity(Intent(this, MenuTacheActivity::class.java))
+                        var nom = intent.getStringExtra("nom").toString()
+                        val intent: Intent =  Intent(applicationContext, MenuTacheActivity::class.java)
+                        intent.putExtra("nom", nom)
+                        startActivity(intent)
+                        //startActivity(Intent(this, MenuTacheActivity::class.java))
                     }
                     .addOnFailureListener {
                         Toast.makeText(this, " Data not added ", Toast.LENGTH_LONG).show()
@@ -117,6 +129,8 @@ class TacheActivity : AppCompatActivity() {
         var datefp: String = findViewById<EditText>(R.id.editTextDateF).text.toString()
         var descr1p: String = findViewById<EditText>(R.id.description1_edit_text).text.toString()
         var avance: String = findViewById<EditText>(R.id.editTextAvancementT).text.toString()
+        var col: String = findViewById<EditText>(R.id.editTextCollab).text.toString()
+        val nom = intent.getStringExtra("nom")
         val intent = Intent(this, listesttActivity::class.java)
         intent.putExtra("projet", namep)
         intent.putExtra("description1", descr1p)
@@ -125,6 +139,8 @@ class TacheActivity : AppCompatActivity() {
         intent.putExtra("status", statusp)
         intent.putExtra("avancement", avance)
         intent.putExtra("tache", tache)
+        intent.putExtra("col", col)
+        intent.putExtra("nom", nom)
         startActivity(intent)
     }
 
@@ -136,6 +152,8 @@ class TacheActivity : AppCompatActivity() {
         var datefp: String = findViewById<EditText>(R.id.editTextDateF).text.toString()
         var descr1p: String = findViewById<EditText>(R.id.description1_edit_text).text.toString()
         var avance: String = findViewById<EditText>(R.id.editTextAvancementT).text.toString()
+        var col: String = findViewById<EditText>(R.id.editTextCollab).text.toString()
+        val nom = intent.getStringExtra("nom")
         val intent = Intent(this, listeavtActivity::class.java)
         intent.putExtra("projet", namep)
         intent.putExtra("tache", tache)
@@ -144,9 +162,12 @@ class TacheActivity : AppCompatActivity() {
         intent.putExtra("datef", datefp)
         intent.putExtra("status", statusp)
         intent.putExtra("avancement", avance)
+        intent.putExtra("col", col)
+        intent.putExtra("nom", nom)
         startActivity(intent)
     }
     public fun listeProjet(view: View) {
+        val nom = intent.getStringExtra("nom")
         var tache: String = findViewById<EditText>(R.id.nom_edit_text).text.toString()
         var namep: String = findViewById<EditText>(R.id.projet_edit_text).text.toString()
         var status: String = findViewById<EditText>(R.id.status_edit_text).text.toString()
@@ -154,6 +175,7 @@ class TacheActivity : AppCompatActivity() {
         var datefp: String = findViewById<EditText>(R.id.editTextDateF).text.toString()
         var descr1p: String = findViewById<EditText>(R.id.description1_edit_text).text.toString()
         var avance: String = findViewById<EditText>(R.id.editTextAvancementT).text.toString()
+        var col: String = findViewById<EditText>(R.id.editTextCollab).text.toString()
         val intent = Intent(this, listeprtActivity::class.java)
         intent.putExtra("projet", namep)
         intent.putExtra("tache", tache)
@@ -162,10 +184,44 @@ class TacheActivity : AppCompatActivity() {
         intent.putExtra("datef", datefp)
         intent.putExtra("status", status)
         intent.putExtra("avancement", avance)
+        intent.putExtra("col", col)
+        intent.putExtra("nom", nom)
         startActivity(intent)
     }
     public fun retourMenu(view:View)
     {
-        startActivity(Intent(this, MenuTacheActivity::class.java))
+        var intent1 :Intent= getIntent()
+        var user = intent1.getStringExtra("user").toString()
+        var nom = intent1.getStringExtra("nom").toString()
+        var role = intent1.getStringExtra("role").toString()
+        val intent: Intent =  Intent(applicationContext, MenuTacheActivity::class.java)
+        intent.putExtra("user", user)
+        intent.putExtra("role", role)
+        intent.putExtra("nom", nom)
+        startActivity(intent)
+        //startActivity(Intent(this, MenuTacheActivity::class.java))
+    }
+    public fun listeCollab(view: View) {
+        val nom = intent.getStringExtra("nom")
+        var tache: String = findViewById<EditText>(R.id.nom_edit_text).text.toString()
+        var namep: String = findViewById<EditText>(R.id.projet_edit_text).text.toString()
+        var status: String = findViewById<EditText>(R.id.status_edit_text).text.toString()
+        var datedp: String = findViewById<EditText>(R.id.editTextDateD).text.toString()
+        var datefp: String = findViewById<EditText>(R.id.editTextDateF).text.toString()
+        var descr1p: String = findViewById<EditText>(R.id.description1_edit_text).text.toString()
+        var avance: String = findViewById<EditText>(R.id.editTextAvancementT).text.toString()
+        var col: String = findViewById<EditText>(R.id.editTextCollab).text.toString()
+        val intent = Intent(this, listecolActivity::class.java)
+        intent.putExtra("projet", namep)
+        intent.putExtra("tache", tache)
+        intent.putExtra("description1", descr1p)
+        intent.putExtra("dated", datedp)
+        intent.putExtra("datef", datefp)
+        intent.putExtra("status", status)
+        intent.putExtra("avancement", avance)
+        intent.putExtra("col", col)
+        intent.putExtra("activity", "tache")
+        intent.putExtra("nom", nom)
+        startActivity(intent)
     }
 }

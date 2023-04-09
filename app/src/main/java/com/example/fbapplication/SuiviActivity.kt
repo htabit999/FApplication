@@ -15,11 +15,9 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class SuiviActivity : AppCompatActivity() {
-    //lateinit var ref : DatabaseReference
-    //lateinit var dataList : MutableList<Projet>
     lateinit var listView: ListView
     private var db = Firebase.firestore
-    private lateinit var projList: ArrayList<Projet>
+
     override fun onCreate(savedInstanceState: Bundle?)
     {
         android.util.Log.d(ContentValues.TAG, "onCreate")
@@ -29,7 +27,8 @@ class SuiviActivity : AppCompatActivity() {
         listView = findViewById(R.id.listeView)
         var list = ArrayList<Project>()
         val user = FirebaseAuth.getInstance().currentUser!!.uid
-        db.collection("Projet").whereEqualTo("USERID", user)
+        var nom = intent.getStringExtra("nom").toString()
+        db.collection("Projet").whereEqualTo("Chef", nom)
             .get()
             .addOnCompleteListener {
                 if (it.isSuccessful)
@@ -43,7 +42,8 @@ class SuiviActivity : AppCompatActivity() {
                                 document.data.getValue("datefin") as String,
                                 document.data.getValue("Status") as String,
                                 document.data.getValue("USERID") as String,
-                                document.data.getValue("Avancement").toString().toInt()
+                                document.data.getValue("Avancement").toString().toInt(),
+                                document.data.getValue("Chef") as String
                             )
                         )
                     }
@@ -54,6 +54,9 @@ class SuiviActivity : AppCompatActivity() {
         listView.setOnItemClickListener()
         {
                 adapterView, view, position, id ->
+                val role = intent.getStringExtra("role")
+                val nom = intent.getStringExtra("nom")
+                val user = intent.getStringExtra("user")
                 var intent : Intent = Intent(applicationContext, SuiviTacheActivity::class.java)
                 intent.putExtra("projet", list[position].PROJET)
                 intent.putExtra("description1", list[position].DESCRIPTION1)
@@ -62,6 +65,9 @@ class SuiviActivity : AppCompatActivity() {
                 intent.putExtra("status", list[position].STATUS)
                 intent.putExtra("avancement", list[position].AVANCEMENT.toString())
                 intent.putExtra("id", list[position].USERID)
+                intent.putExtra("role", role)
+                intent.putExtra("nom", nom)
+                intent.putExtra("user", user)
                 startActivity(intent)
         }
     }
@@ -69,8 +75,14 @@ class SuiviActivity : AppCompatActivity() {
         TODO("Not yet implemented")
     }
 }
-public fun retourMenu(view: View)
-{
-    startActivity(Intent(this, menuSuiviActivity::class.java))
-}
+    public fun retourMenu(view: View) {
+        val role = intent.getStringExtra("role")
+        val nom = intent.getStringExtra("nom")
+        val user = intent.getStringExtra("user")
+        val intent: Intent =  Intent(applicationContext, menuSuiviActivity::class.java)
+        intent.putExtra("role", role)
+        intent.putExtra("nom", nom)
+        intent.putExtra("user", user)
+        startActivity(intent)
+    }
 }

@@ -19,10 +19,18 @@ class listeAdapterTache(private val context: Activity, private val title: ArrayL
         val vdescirption = rowView.findViewById(R.id.description) as TextView
         val vcollaborateur = rowView.findViewById(R.id.collaborateur) as TextView
         val vstatus = rowView.findViewById(R.id.status) as TextView
+        val projet = rowView.findViewById(R.id.projet) as TextView
+        val avance = rowView.findViewById(R.id.avancement) as TextView
+        val ddebut = rowView.findViewById(R.id.datedb) as TextView
+        val dfin = rowView.findViewById(R.id.datefn) as TextView
         vtitle.text = title[position].TACHE
         vdescirption.text = title[position].DESCRIPTION1
-        vcollaborateur.text = title[position].PROJET
+        vcollaborateur.text = title[position].COLLABORATEUR
         vstatus.text = title[position].STATUS
+        projet.text=title[position].PROJET
+        avance.text=title[position].AVANCEMENT.toString()
+        ddebut.text=title[position].DATEDEB
+        dfin.text=title[position].DATEFIN
         return rowView
     }
 }

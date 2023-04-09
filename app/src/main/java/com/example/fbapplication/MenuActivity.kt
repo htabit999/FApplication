@@ -4,45 +4,81 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
+import android.widget.Toast
+import com.example.fbapplication.models.Users
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
-class MenuActivity : AppCompatActivity() {
-    //public var user: String = ""
-    //var intent :Intent= getIntent()
+class MenuActivity: AppCompatActivity() {
+    private var db = Firebase.firestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
-        //
-        //var mApp = LoginActivity()
-        //var strGlobalVar = mApp.user.toString()
-        //var intent :Intent= getIntent()
-        //var user = intent.getStringExtra("user").toString()
-        //Toast.makeText(this@MenuActivity, "USR1 : " + user, Toast.LENGTH_LONG).show()
-        //
+        val intent = intent
+        val role = intent.getStringExtra("role")
+        val nom = intent.getStringExtra("nom")
+        val user = intent.getStringExtra("user")
+        //Toast.makeText(this, "Nom Chef 1: ", Toast.LENGTH_LONG).show()
     }
     public fun menuTache(view: View) {
-        startActivity(Intent(this, MenuTacheActivity::class.java))
-    }
-    public fun menuProjet(view: View) {
-        //val intent: Intent =  Intent(applicationContext, MenuActivity::class.java)
-        var intent1 :Intent= getIntent()
-        var user = intent1.getStringExtra("user").toString()
-
-        val intent: Intent =  Intent(applicationContext, MenuProjetActivity::class.java)
+        val intent1 :Intent= getIntent()
+        val user = intent1.getStringExtra("user").toString()
+        val nom = intent1.getStringExtra("nom").toString()
+        val role = intent1.getStringExtra("role").toString()
+        val intent: Intent =  Intent(applicationContext, MenuTacheActivity::class.java)
+        intent.putExtra("role", role)
+        intent.putExtra("nom", nom)
         intent.putExtra("user", user)
         startActivity(intent)
-
-        //intent.putExtra("user", user)
-        //Toast.makeText(this@MenuActivity, "USR1 : " + user, Toast.LENGTH_LONG).show()
-        //startActivity(intent)
-        //startActivity(Intent(this, MenuProjetActivity::class.java))
+    }
+    public fun menuProjet(view: View) {
+        val intent1 :Intent= getIntent()
+        val user = intent1.getStringExtra("user").toString()
+        val nom = intent1.getStringExtra("nom").toString()
+        val role = intent1.getStringExtra("role").toString()
+        //Toast.makeText(this, "Nom Chef 2: "+nom, Toast.LENGTH_LONG).show()
+        val intent: Intent =  Intent(applicationContext, MenuPProjetActivity::class.java)
+        intent.putExtra("role", role)
+        intent.putExtra("nom", nom)
+        intent.putExtra("user", user)
+        startActivity(intent)
     }
     public fun menuCollab(view: View) {
-        startActivity(Intent(this, MenuCollabActivity::class.java))
+        val intent1 :Intent= getIntent()
+        val user = intent1.getStringExtra("user").toString()
+        val nom = intent1.getStringExtra("nom").toString()
+        val role = intent1.getStringExtra("role").toString()
+        val intent: Intent =  Intent(applicationContext, MenuCollabActivity::class.java)
+        intent.putExtra("role", role)
+        intent.putExtra("nom", nom)
+        intent.putExtra("user", user)
+        startActivity(intent)
+     // startActivity(Intent(this, MenuCollabActivity::class.java))
     }
     public fun menuSuivi(view: View) {
-        startActivity(Intent(this, menuSuiviActivity::class.java))
+        val intent1 :Intent= getIntent()
+        val user = intent1.getStringExtra("user").toString()
+        val nom = intent1.getStringExtra("nom").toString()
+        val role = intent1.getStringExtra("role").toString()
+        val intent: Intent =  Intent(applicationContext, menuSuiviActivity::class.java)
+        intent.putExtra("role", role)
+        intent.putExtra("nom", nom)
+        intent.putExtra("user", user)
+        startActivity(intent)
+        //startActivity(Intent(this, menuSuiviActivity::class.java))
     }
     public fun Retour(view: View) {
-        startActivity(Intent(this, MainActivity::class.java))
+        val intent1 :Intent= getIntent()
+        val user = intent1.getStringExtra("user").toString()
+        val nom = intent1.getStringExtra("nom").toString()
+        val role = intent1.getStringExtra("role").toString()
+        val intent: Intent =  Intent(applicationContext, MainActivity::class.java)
+        intent.putExtra("role", role)
+        intent.putExtra("nom", nom)
+        intent.putExtra("user", user)
+        startActivity(intent)
+        //startActivity(Intent(this, MainActivity::class.java))
     }
 }

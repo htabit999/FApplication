@@ -15,6 +15,57 @@
         android:theme="@style/Theme.FBApplication"
         tools:targetApi="31">
         <activity
+            android:name=".SuiviTacheAdmActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SuiviAdmActivity"
+            android:exported="false" />
+        <activity
+            android:name=".menuSuiviAdmActivity"
+            android:exported="false" />
+        <activity
+            android:name=".listecolActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MenuPProjetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".majCHProjetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CHDataFSActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MenuCHProjetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".majProjetChefActivity"
+            android:exported="false" />
+        <activity
+            android:name=".listechActivity"
+            android:exported="false" />
+        <activity
+            android:name=".listeChefActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MajChefProjetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChefProjetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChefrojetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListeChefProjetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MenuChefProjetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MenuChefActivity"
+            android:exported="false" />
+        <activity
             android:name=".lCollabActivity"
             android:exported="false" />
         <activity

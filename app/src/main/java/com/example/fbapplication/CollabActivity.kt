@@ -21,6 +21,7 @@ class CollabActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         val role=intent.getStringExtra("role")
         val nom =intent.getStringExtra("nom")
+        val nomc =intent.getStringExtra("nomc")
         val prenom=intent.getStringExtra("prenom")
         val email=intent.getStringExtra("email")
         val psw = intent.getStringExtra("psw")
@@ -31,8 +32,8 @@ class CollabActivity : AppCompatActivity() {
         val em = this.findViewById(R.id.email_edit_text) as TextView
         val ps = this.findViewById(R.id.password_edit_text) as TextView
         val rp = this.findViewById(R.id.re_password_edit_text) as TextView
-        rl.text = role
-        nm.text=nom
+        rl.text = "Collaborateur"
+        nm.text=nomc
         pr.text=prenom
         em.text = email
         ps.text=psw
@@ -43,43 +44,56 @@ class CollabActivity : AppCompatActivity() {
         var password: String = findViewById<EditText>(R.id.password_edit_text).text.toString()
         var nom: String = findViewById<EditText>(R.id.editTextNom).text.toString()
         var prenom: String = findViewById<EditText>(R.id.editTextPrenom).text.toString()
-        var role: String = findViewById<EditText>(R.id.role_edit_text).text.toString()
-        val user = HashMap<String, Any>()
-        user["Email"] = email
-        user["Nom"] = nom
-        user["Prenom"] = prenom
-        user["Role"] = role
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    Toast.makeText(this, "User added ", Toast.LENGTH_LONG).show()
-                    addUser()
-                }
-                else
-                {
-                    Toast.makeText(this, "User not added ", Toast.LENGTH_LONG).show()
-                }
+        //var role: String = findViewById<EditText>(R.id.role_edit_text).text.toString()
+        if (nom.isEmpty() || password.isEmpty() || email.isEmpty() || prenom.isEmpty() )
+            {
+                Toast.makeText(this, "Merci de remplir les champs", Toast.LENGTH_LONG).show()
             }
+        else {
+            val user = HashMap<String, Any>()
+            user["Email"] = email
+            user["Nom"] = nom
+            user["Prenom"] = prenom
+            user["Role"] = "Collaborateur"
+            auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(this, "User added ", Toast.LENGTH_LONG).show()
+                        addUser()
+                    } else {
+                        Toast.makeText(this, "User not added ", Toast.LENGTH_LONG).show()
+                    }
+                }
+        }
     }
     public fun addUser(){
         val uid = FirebaseAuth.getInstance().currentUser!!.uid
         var email: String = findViewById<EditText>(R.id.email_edit_text).text.toString()
         var password: String = findViewById<EditText>(R.id.password_edit_text).text.toString()
-        var nom: String = findViewById<EditText>(R.id.editTextNom).text.toString()
+        var nomc: String = findViewById<EditText>(R.id.editTextNom).text.toString()
         var prenom: String = findViewById<EditText>(R.id.editTextPrenom).text.toString()
-        var role: String = findViewById<EditText>(R.id.role_edit_text).text.toString()
+        //var role: String = findViewById<EditText>(R.id.role_edit_text).text.toString()
         val add = HashMap<String, Any>()
         add["UID"] = uid
-        add["Nom"] = nom
+        add["Nom"] = nomc
         add["Prenom"] = prenom
         add["Email"] = email
-        add["Role"] = role
+        add["Role"] = "Collaborateur"
         var idp : String = dbf.collection("Projet").id
         dbf.collection("Users")
-            .document(nom).set(add)
+            .document(nomc).set(add)
             .addOnSuccessListener {
                 Toast.makeText(this, "Data added ", Toast.LENGTH_LONG).show()
-                startActivity(Intent(this, MenuCollabActivity::class.java))
+                var intent1 :Intent= getIntent()
+                var user = intent1.getStringExtra("user").toString()
+                var nom = intent1.getStringExtra("nom").toString()
+                var role = intent1.getStringExtra("role").toString()
+                val intent: Intent =  Intent(applicationContext, MenuCollabActivity::class.java)
+                intent.putExtra("user", user)
+                intent.putExtra("role", role)
+                intent.putExtra("nom", nom)
+                startActivity(intent)
+                //startActivity(Intent(this, MenuCollabActivity::class.java))
             }
             .addOnFailureListener {
                 Toast.makeText(this, " Data not added ", Toast.LENGTH_LONG).show()
@@ -88,18 +102,39 @@ class CollabActivity : AppCompatActivity() {
     }
 
     public fun listeRole(view: View) {
-        var nom: String = findViewById<EditText>(R.id.editTextNom).text.toString()
+        var nomc: String = findViewById<EditText>(R.id.editTextNom).text.toString()
         var prenom: String = findViewById<EditText>(R.id.editTextPrenom).text.toString()
         var email: String = findViewById<EditText>(R.id.email_edit_text).text.toString()
         var psw: String = findViewById<EditText>(R.id.password_edit_text).text.toString()
         var rpsw: String = findViewById<EditText>(R.id.re_password_edit_text).text.toString()
+        var intent1 :Intent= getIntent()
+        val role = intent.getStringExtra("role")
+        val nom = intent.getStringExtra("nom")
+        val user = intent.getStringExtra("user")
         val intent = Intent(this, listeroleActivity::class.java)
-        intent.putExtra("nom", nom)
+        intent.putExtra("nomc", nomc)
         intent.putExtra("prenom", prenom)
         intent.putExtra("email", email)
         intent.putExtra("psw", psw)
         intent.putExtra("rpsw", rpsw)
         intent.putExtra("activity", "collabactivity")
+        intent.putExtra("user", user)
+        intent.putExtra("user", user)
+        intent.putExtra("role", role)
+        intent.putExtra("nom", nom)
         startActivity(intent)
+    }
+    public fun retour(view: View)
+    {
+        var intent1 :Intent= getIntent()
+        var user = intent1.getStringExtra("user").toString()
+        var nom = intent1.getStringExtra("nom").toString()
+        var role = intent1.getStringExtra("role").toString()
+        val intent: Intent =  Intent(applicationContext, MenuCollabActivity::class.java)
+        intent.putExtra("user", user)
+        intent.putExtra("role", role)
+        intent.putExtra("nom", nom)
+        startActivity(intent)
+        //startActivity(Intent(this, MenuCollabActivity::class.java))
     }
 }

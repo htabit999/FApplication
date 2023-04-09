@@ -68,7 +68,16 @@ class RegistrationActivity : AppCompatActivity() {
             .document(nom).set(add)
             .addOnSuccessListener {
                 Toast.makeText(this, "Data added ", Toast.LENGTH_LONG).show()
-                startActivity(Intent(this, MenuProjetActivity::class.java))
+                val role = intent.getStringExtra("role")
+                val nom = intent.getStringExtra("nom")
+                val user = intent.getStringExtra("user")
+                val intent: Intent =  Intent(applicationContext, MenuProjetActivity::class.java)
+                intent.putExtra("role", role)
+                intent.putExtra("nom", nom)
+                intent.putExtra("user", user)
+                startActivity(intent)
+
+                //startActivity(Intent(this, MenuProjetActivity::class.java))
             }
             .addOnFailureListener {
                 Toast.makeText(this, " Data not added ", Toast.LENGTH_LONG).show()

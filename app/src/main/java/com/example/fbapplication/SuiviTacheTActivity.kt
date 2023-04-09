@@ -26,8 +26,6 @@ class SuiviTacheTActivity : AppCompatActivity() {
         listView = findViewById(R.id.listeView)
         var list = ArrayList<Tache>()
         val user = FirebaseAuth.getInstance().currentUser!!.uid
-        //val intent = intent
-        //val projet = intent.getStringExtra("projet")
         db.collection("Tache").whereEqualTo("USERID", user)
             .get()
             .addOnCompleteListener {
@@ -43,7 +41,8 @@ class SuiviTacheTActivity : AppCompatActivity() {
                                 document.data.getValue("Projet") as String,
                                 document.data.getValue("Avancement").toString().toInt(),
                                 document.data.getValue("Status") as String,
-                                document.data.getValue("USERID") as String
+                                document.data.getValue("USERID") as String,
+                                document.data.getValue("Collaborateur") as String
                             )
                         )
                     }
@@ -58,6 +57,11 @@ class SuiviTacheTActivity : AppCompatActivity() {
     }
     public fun retourMenu(view: View)
     {
-        startActivity(Intent(this, menuSuiviActivity::class.java))
+        var intent1 :Intent= getIntent()
+        var nom = intent1.getStringExtra("nom").toString()
+        val intent: Intent =  Intent(applicationContext, menuSuiviActivity::class.java)
+        intent.putExtra("nom", nom)
+        startActivity(intent)
+        //startActivity(Intent(this, menuSuiviActivity::class.java))
     }
 }

@@ -29,21 +29,10 @@ class listeprtActivity : AppCompatActivity() {
         val user = FirebaseAuth.getInstance().currentUser!!.uid
         val list = ArrayList<NomProjet>()
         readDataFromFirestore(10)
-        //db.collection("Projet")
-        //    .get()
-        //    .addOnCompleteListener{
-        //        if (it.isSuccessful) {
-        //          for (document in it.result) {
-        //              //namesList.add("document")
-        //                list.add(
-        //                    NomProjet(
-        //                        document.data.getValue("Projet") as String
-        //                    )
-        //                )
-        //            }
-        //        }
-        //    }
             val intent = intent
+            val role = intent.getStringExtra("role")
+            val nom = intent.getStringExtra("nom")
+            //val user = intent.getStringExtra("user")
             val tache = intent.getStringExtra("tache")
             val projet = intent.getStringExtra("projet")
             val d1 = intent.getStringExtra("description1")
@@ -51,6 +40,7 @@ class listeprtActivity : AppCompatActivity() {
             val dd = intent.getStringExtra("dated")
             val df = intent.getStringExtra("datef")
             val av = intent.getStringExtra("avancement")
+            val cl=intent.getStringExtra("col")
             val act=intent.getStringExtra("activity")
             binding = ActivityListeprtBinding.inflate(layoutInflater)
             setContentView(binding.root)
@@ -58,8 +48,11 @@ class listeprtActivity : AppCompatActivity() {
             binding.autoCompleteTextView.setAdapter(arrayAdapter)
             binding.autoCompleteTextView.setOnItemClickListener { _, _, position, _ ->
                 val value = arrayAdapter.getItem(position) ?: ""
-                val act=intent.getStringExtra("activity")
+                //val act=intent.getStringExtra("activity")
                 if (act=="majtacheactivity") {
+                    val role = intent.getStringExtra("role")
+                    val nom = intent.getStringExtra("nom")
+                    val user = intent.getStringExtra("user")
                     var intent : Intent= Intent(applicationContext, majTacheActivity::class.java)
                     intent.putExtra("projet", value.toString())
                     intent.putExtra("tache", tache)
@@ -68,10 +61,17 @@ class listeprtActivity : AppCompatActivity() {
                     intent.putExtra("datef",df)
                     intent.putExtra("status", st)
                     intent.putExtra("avancement", av)
+                    intent.putExtra("col", cl)
+                    intent.putExtra("role", role)
+                    intent.putExtra("nom", nom)
+                    intent.putExtra("user", user)
                     startActivity(intent)
                 }
                 else
                 {
+                    val role = intent.getStringExtra("role")
+                    val nom = intent.getStringExtra("nom")
+                    val user = intent.getStringExtra("user")
                     var intent : Intent= Intent(applicationContext, TacheActivity::class.java)
                     intent.putExtra("projet", value.toString())
                     intent.putExtra("tache", tache)
@@ -80,6 +80,10 @@ class listeprtActivity : AppCompatActivity() {
                     intent.putExtra("datef",df)
                     intent.putExtra("status", st)
                     intent.putExtra("avancement", av)
+                    intent.putExtra("col", cl)
+                    intent.putExtra("role", role)
+                    intent.putExtra("nom", nom)
+                    intent.putExtra("user", user)
                     startActivity(intent)
                 }
         }

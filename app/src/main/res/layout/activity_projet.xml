@@ -12,16 +12,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="18dp"
         android:onClick="retourMenu"
         android:text="Retour"
         app:cornerRadius="240dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_button" />
+        app:layout_constraintTop_toBottomOf="@+id/login_button"
+        app:layout_constraintVertical_bias="0.5" />
 
     <Button
         android:id="@+id/login_button"
@@ -30,19 +31,21 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:onClick="addFSProjet"
+        android:onClick="addProjet"
         android:text="Ajouter"
         app:cornerRadius="240dp"
+        app:layout_constraintBottom_toTopOf="@+id/retour_button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout7"
+        app:layout_constraintVertical_bias="0.5" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:text="Creer un projet"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -70,7 +73,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -162,8 +165,8 @@
             android:id="@+id/statusP_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Status OUVERT - EN COURS - FERME"
-            android:editable="false" />
+            android:editable="false"
+            android:hint="Status OUVERT - EN COURS - FERME" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -184,8 +187,30 @@
             android:id="@+id/editTextAvc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Etat avancement %"
-            android:editable="false" />
+            android:editable="false"
+            android:hint="Etat avancement %" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout7"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        app:boxCollapsedPaddingTop="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout6">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextChef"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:hint="Chef de projet" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -194,7 +219,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="440dp"
+        android:layout_marginTop="420dp"
         android:layout_marginEnd="8dp"
         android:onClick="listeStatus"
         app:layout_constraintEnd_toEndOf="parent"
@@ -213,4 +238,29 @@
         app:layout_constraintStart_toEndOf="@+id/textInputLayout6"
         app:layout_constraintTop_toBottomOf="@+id/imageView6"
         app:srcCompat="@android:drawable/ic_menu_search" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="29dp"
+        android:onClick="listeChef"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textInputLayout6"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7"
+        app:srcCompat="@android:drawable/ic_menu_search" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="51dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="18dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:srcCompat="?attr/homeAsUpIndicator" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

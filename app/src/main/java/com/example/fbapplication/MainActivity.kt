@@ -14,10 +14,28 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
      public fun gotoLogin(view: View) {
-            startActivity(Intent(this, LoginActivity::class.java))
+         //val intent = intent
+         val role = intent.getStringExtra("role")
+         val nom = intent.getStringExtra("nom")
+         val user = intent.getStringExtra("user")
+         val intent: Intent =  Intent(applicationContext, MenuTacheActivity::class.java)
+         intent.putExtra("role", role)
+         intent.putExtra("nom", nom)
+         intent.putExtra("user", user)
+         startActivity(intent)
+         //startActivity(Intent(this, LoginActivity::class.java))
         }
     public fun gotoReg(view: View) {
-            startActivity(Intent(this, RegisterActivity::class.java))
+        //val intent = intent
+        val role = intent.getStringExtra("role")
+        val nom = intent.getStringExtra("nom")
+        val user = intent.getStringExtra("user")
+        val intent: Intent =  Intent(applicationContext, RegisterActivity::class.java)
+        intent.putExtra("role", role)
+        intent.putExtra("nom", nom)
+        intent.putExtra("user", user)
+        startActivity(intent)
+        //startActivity(Intent(this, RegisterActivity::class.java))
         }
 
 }

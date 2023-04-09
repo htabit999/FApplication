@@ -35,21 +35,29 @@ class ProjetActivity : AppCompatActivity() {
         val dd = intent.getStringExtra("dated")
         val df = intent.getStringExtra("datef")
         val av = intent.getStringExtra("av")
+        val ch = intent.getStringExtra("ch")
+        val role = intent.getStringExtra("role")
+        val nom = intent.getStringExtra("nom")
+        val user = intent.getStringExtra("user")
+
         val prj = this.findViewById(R.id.nom_edit_text) as TextView
         val des1 = this.findViewById(R.id.description1_edit_text) as TextView
         val dtd = this.findViewById(R.id.editTextDateD) as TextView
         val dtf = this.findViewById(R.id.editTextDateF) as TextView
         val sta = this.findViewById(R.id.statusP_edit_text) as TextView
         val avc = this.findViewById(R.id.editTextAvc) as TextView
+        val chef = this.findViewById(R.id.editTextChef) as TextView
+
         prj.text = nprj
         des1.text = d1
         dtd.text = dd
         dtf.text = df
         sta.text = st
         avc.text = av
+        chef.text=ch
     }
 
-    public fun addFSProjet(view: View) {
+    public fun addProjet(view: View) {
         val user = FirebaseAuth.getInstance().currentUser!!.uid
         var namep: String = findViewById<EditText>(R.id.nom_edit_text).text.toString()
         var statusp: String = findViewById<EditText>(R.id.statusP_edit_text).text.toString()
@@ -57,12 +65,12 @@ class ProjetActivity : AppCompatActivity() {
         var datefp: String = findViewById<EditText>(R.id.editTextDateF).text.toString()
         var descr1p: String = findViewById<EditText>(R.id.description1_edit_text).text.toString()
         var avance: String = findViewById<EditText>(R.id.editTextAvc).text.toString()
+        var chef: String = findViewById<EditText>(R.id.editTextChef).text.toString()
 
-        if (namep.isEmpty() || statusp.isEmpty() || datedp.isEmpty() || datefp.isEmpty() || descr1p.isEmpty() || avance.isEmpty()) {
+        if (namep.isEmpty() || statusp.isEmpty() || datedp.isEmpty() || datefp.isEmpty() || descr1p.isEmpty() || avance.isEmpty() || chef.isEmpty()) {
             Toast.makeText(this, "Il faut remplir tous les champs", Toast.LENGTH_SHORT).show()
         } else {
             if (legalDoB(datedp) && legalDoB(datefp)) {
-                //Toast.makeText(this, "Date correcte", Toast.LENGTH_SHORT).show()
                 val add = HashMap<String, Any>()
                 add["Projet"] = namep
                 add["Description1"] = descr1p
@@ -71,13 +79,20 @@ class ProjetActivity : AppCompatActivity() {
                 add["Avancement"] = avance
                 add["datefin"] = datefp
                 add["USERID"] = user
+                add["Chef"]=chef
                 var idp: String = dbf.collection("Projet").id
                 dbf.collection("Projet")
                     .document(namep).set(add)
-                    //.add(add)
                     .addOnSuccessListener {
+                        val role = intent.getStringExtra("role")
+                        val nom = intent.getStringExtra("nom")
+                        val user = intent.getStringExtra("user")
                         Toast.makeText(this, "Data added ", Toast.LENGTH_LONG).show()
-                        startActivity(Intent(this, MenuProjetActivity::class.java))
+                        val intent: Intent =  Intent(applicationContext, MenuCHProjetActivity::class.java)
+                        intent.putExtra("role", role)
+                        intent.putExtra("nom", nom)
+                        intent.putExtra("user", user)
+                        startActivity(intent)
                     }
                     .addOnFailureListener {
                         Toast.makeText(this, " Data not added ", Toast.LENGTH_LONG).show()
@@ -88,31 +103,6 @@ class ProjetActivity : AppCompatActivity() {
             {
                 Toast.makeText(this, "Date incorrecte ", Toast.LENGTH_LONG).show()
             }
-        }
-    }
-    public fun addProjet(view: View) {
-        val user = FirebaseAuth.getInstance().currentUser!!.uid
-        Toast.makeText(this, user, Toast.LENGTH_SHORT).show()
-
-        var namep: String = findViewById<EditText>(R.id.nom_edit_text).text.toString()
-        var statusp: String = findViewById<EditText>(R.id.statusP_edit_text).text.toString()
-        var datedp: String = findViewById<EditText>(R.id.editTextDateD).text.toString()
-        var datefp: String = findViewById<EditText>(R.id.editTextDateF).text.toString()
-        var descr1p: String = findViewById<EditText>(R.id.description1_edit_text).text.toString()
-        var avance: String = findViewById<EditText>(R.id.editTextAvc).text.toString()
-        if (namep.isEmpty() || statusp.isEmpty() || datedp.isEmpty() || datefp.isEmpty() || descr1p.isEmpty() || avance.isEmpty()) {
-            Toast.makeText(this, "Il faut remplir tous les champs", Toast.LENGTH_SHORT).show()
-        } else {
-            //var idp : String = db.push().key!!
-            var av = avance.toInt()
-            val projet = Projet(namep, descr1p, datedp, datefp, statusp, user, av)
-            db.child("Base").child("Projet").child(namep).setValue(projet)
-                .addOnCompleteListener {
-                    Toast.makeText(this, "Data inserted successfully", Toast.LENGTH_LONG).show()
-                }.addOnFailureListener { err ->
-                    Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_LONG).show()
-                }
-            startActivity(Intent(this, DataFSActivity::class.java))
         }
     }
 
@@ -137,6 +127,10 @@ class ProjetActivity : AppCompatActivity() {
         var datefp: String = findViewById<EditText>(R.id.editTextDateF).text.toString()
         var descr1p: String = findViewById<EditText>(R.id.description1_edit_text).text.toString()
         var avance: String = findViewById<EditText>(R.id.editTextAvc).text.toString()
+        var chef: String = findViewById<EditText>(R.id.editTextChef).text.toString()
+        val role = intent.getStringExtra("role")
+        val nom = intent.getStringExtra("nom")
+        val user = intent.getStringExtra("user")
         val intent = Intent(this, listeActivity::class.java)
         intent.putExtra("activity", "projet")
         intent.putExtra("projet", namep)
@@ -145,6 +139,10 @@ class ProjetActivity : AppCompatActivity() {
         intent.putExtra("datef", datefp)
         intent.putExtra("status", statusp)
         intent.putExtra("av", avance)
+        intent.putExtra("ch", chef)
+        intent.putExtra("role", role)
+        intent.putExtra("nom", nom)
+        intent.putExtra("user", user)
         startActivity(intent)
     }
 
@@ -155,6 +153,10 @@ class ProjetActivity : AppCompatActivity() {
         var datefp: String = findViewById<EditText>(R.id.editTextDateF).text.toString()
         var descr1p: String = findViewById<EditText>(R.id.description1_edit_text).text.toString()
         var avance: String = findViewById<EditText>(R.id.editTextAvc).text.toString()
+        var chef: String = findViewById<EditText>(R.id.editTextChef).text.toString()
+        val role = intent.getStringExtra("role")
+        val nom = intent.getStringExtra("nom")
+        val user = intent.getStringExtra("user")
         val intent = Intent(this, listeavActivity::class.java)
         intent.putExtra("activity", "projet")
         intent.putExtra("projet", namep)
@@ -163,10 +165,49 @@ class ProjetActivity : AppCompatActivity() {
         intent.putExtra("datef", datefp)
         intent.putExtra("status", statusp)
         intent.putExtra("av", avance)
+        intent.putExtra("ch", chef)
+        intent.putExtra("role", role)
+        intent.putExtra("nom", nom)
+        intent.putExtra("user", user)
         startActivity(intent)
     }
+
+    public fun listeChef(view: View) {
+        var namep: String = findViewById<EditText>(R.id.nom_edit_text).text.toString()
+        var statusp: String = findViewById<EditText>(R.id.statusP_edit_text).text.toString()
+        var datedp: String = findViewById<EditText>(R.id.editTextDateD).text.toString()
+        var datefp: String = findViewById<EditText>(R.id.editTextDateF).text.toString()
+        var descr1p: String = findViewById<EditText>(R.id.description1_edit_text).text.toString()
+        var avance: String = findViewById<EditText>(R.id.editTextAvc).text.toString()
+        var chef: String = findViewById<EditText>(R.id.editTextChef).text.toString()
+        val role = intent.getStringExtra("role")
+        val nom = intent.getStringExtra("nom")
+        val user = intent.getStringExtra("user")
+        val intent = Intent(this, listeChefActivity::class.java)
+        intent.putExtra("activity", "projet")
+        intent.putExtra("projet", namep)
+        intent.putExtra("description1", descr1p)
+        intent.putExtra("dated", datedp)
+        intent.putExtra("datef", datefp)
+        intent.putExtra("status", statusp)
+        intent.putExtra("av", avance)
+        intent.putExtra("ch", chef)
+        intent.putExtra("role", role)
+        intent.putExtra("nom", nom)
+        intent.putExtra("user", user)
+        startActivity(intent)
+    }
+
     public fun retourMenu(view:View)
     {
-            startActivity(Intent(this, MenuProjetActivity::class.java))
+        val role = intent.getStringExtra("role")
+        val nom = intent.getStringExtra("nom")
+        val user = intent.getStringExtra("user")
+        val intent: Intent =  Intent(applicationContext, MenuCHProjetActivity::class.java)
+        intent.putExtra("role", role)
+        intent.putExtra("nom", nom)
+        intent.putExtra("user", user)
+        startActivity(intent)
+        //startActivity(Intent(this, MenuCHProjetActivity::class.java))
     }
 }

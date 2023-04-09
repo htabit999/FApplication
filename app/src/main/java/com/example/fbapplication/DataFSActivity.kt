@@ -4,10 +4,17 @@ import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.ListView
+import android.widget.Toast
+import com.example.fbapplication.databinding.ActivityDataFsactivityBinding
 import com.example.fbapplication.models.Project
+import com.example.fbapplication.models.Users
+import com.google.android.gms.tasks.Tasks
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlin.collections.ArrayList
@@ -24,7 +31,9 @@ class DataFSActivity : AppCompatActivity() {
         val user = FirebaseAuth.getInstance().currentUser!!.uid
         listView = findViewById(R.id.listeView)
         var list = ArrayList<Project>()
-        db.collection("Projet").whereEqualTo("USERID", user)
+        var intent1 :Intent= getIntent()
+        var nom = intent1.getStringExtra("nom").toString()
+        db.collection("Projet").whereEqualTo("Chef", nom)
             .get()
             .addOnCompleteListener {
                 if (it.isSuccessful)
@@ -38,8 +47,9 @@ class DataFSActivity : AppCompatActivity() {
                                 document.data.getValue("datefin") as String,
                                 document.data.getValue("Status") as String,
                                 document.data.getValue("USERID") as String,
-                                document.data.getValue("Avancement").toString().toInt()
-                            )
+                                document.data.getValue("Avancement").toString().toInt(),
+                                document.data.getValue("Chef").toString()
+                                )
                         )
                     }
                 }
@@ -56,12 +66,21 @@ class DataFSActivity : AppCompatActivity() {
                     intent.putExtra("status", list[position].STATUS)
                     intent.putExtra("av", list[position].AVANCEMENT.toString())
                     intent.putExtra("id", list[position].USERID)
+                    intent.putExtra("ch", list[position].CHEF)
+                    intent.putExtra("nom", nom)
                     startActivity(intent)
                 }
             }
     }
+
     public fun retourMenu(view: View)
     {
-        startActivity(Intent(this, MenuProjetActivity::class.java))
+        var intent1 :Intent= getIntent()
+        var nom = intent1.getStringExtra("nom").toString()
+        val intent: Intent =  Intent(applicationContext, MenuPProjetActivity::class.java)
+        intent.putExtra("nom", nom)
+        startActivity(intent)
+        //startActivity(Intent(this, MenuPProjetActivity::class.java))
     }
+
 }
