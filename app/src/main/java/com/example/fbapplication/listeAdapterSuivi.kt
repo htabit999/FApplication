@@ -6,11 +6,13 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.example.fbapplication.models.Project
 
 class listeAdapterSuivi(private val context: Activity, private val title: ArrayList<Project>)
         : ArrayAdapter<Project>(context, R.layout.suivi_list, title) {
         override fun getView(position: Int, view: View?, parent: ViewGroup): View {
+
             val inflater = context.layoutInflater
             val rowView = inflater.inflate(R.layout.suivi_list, null, true)
             val titleText = rowView.findViewById(R.id.title) as TextView
@@ -20,6 +22,7 @@ class listeAdapterSuivi(private val context: Activity, private val title: ArrayL
             titleText.text = title[position].PROJET
             chefText.text = title[position].DESCRIPTION1
             statusText.text = title[position].STATUS
+
             when (title[position].AVANCEMENT) {
                 10 -> {
                     imageView.setImageResource(R.drawable.d)

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ListView
+import android.widget.Toast
 import com.example.fbapplication.models.Project
 import com.example.fbapplication.models.Projet
 import com.example.fbapplication.models.Tache
@@ -48,6 +49,7 @@ class SuiviAdmActivity : AppCompatActivity() {
                         )
                     }
                 }
+                Toast.makeText(this, "suivi adm", Toast.LENGTH_SHORT).show()
                 val listView = findViewById<ListView>(R.id.listeView) as ListView
                 val myListAdapter = listeAdapterSuivi(this@SuiviAdmActivity, list)
                 listView.adapter = myListAdapter

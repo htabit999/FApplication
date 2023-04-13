@@ -74,7 +74,7 @@ class MenuActivity: AppCompatActivity() {
         val user = intent1.getStringExtra("user").toString()
         val nom = intent1.getStringExtra("nom").toString()
         val role = intent1.getStringExtra("role").toString()
-        val intent: Intent =  Intent(applicationContext, MainActivity::class.java)
+        val intent: Intent =  Intent(applicationContext, LoginActivity::class.java)
         intent.putExtra("role", role)
         intent.putExtra("nom", nom)
         intent.putExtra("user", user)

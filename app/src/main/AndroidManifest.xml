@@ -15,6 +15,9 @@
         android:theme="@style/Theme.FBApplication"
         tools:targetApi="31">
         <activity
+            android:name=".UploadActivity"
+            android:exported="false" />
+        <activity
             android:name=".majTacheColActivity"
             android:exported="false" />
         <activity
@@ -54,9 +57,6 @@
             android:name=".majProjetChefActivity"
             android:exported="false" />
         <activity
-            android:name=".listechActivity"
-            android:exported="false" />
-        <activity
             android:name=".listeChefActivity"
             android:exported="false" />
         <activity
@@ -64,9 +64,6 @@
             android:exported="false" />
         <activity
             android:name=".ChefProjetActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ChefrojetActivity"
             android:exported="false" />
         <activity
             android:name=".ListeChefProjetActivity"
@@ -184,7 +181,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
