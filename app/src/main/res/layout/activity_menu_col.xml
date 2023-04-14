@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:text="Menu Collaborateur"
+        android:text="Menu Membre Equipe"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="40dp"
         app:cornerRadius="240dp"

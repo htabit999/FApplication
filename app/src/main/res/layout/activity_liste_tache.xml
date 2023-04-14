@@ -11,7 +11,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:text="Liste des taches"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -20,18 +19,6 @@
         app:layout_constraintHorizontal_bias="0.467"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="113dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="115dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
-        app:srcCompat="@drawable/ensaj" />
 
     <ListView
         android:id="@+id/listeTView"
@@ -57,10 +44,8 @@
         android:layout_width="69dp"
         android:layout_height="63dp"
         android:layout_marginStart="9dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginTop="8dp"
         android:onClick="retourMenu"
-        app:layout_constraintEnd_toStartOf="@+id/imageView4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
         app:srcCompat="?attr/homeAsUpIndicator" />
