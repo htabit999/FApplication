@@ -9,28 +9,40 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/filter_spinner_dropdown_bg"
         android:dividerPadding="4dp"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="6dp">
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="100dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:text="Titre"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/icon"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="70dp"
+            android:layout_height="61dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="24dp"
+            app:civ_border_color="#FF3700B3"
+            app:civ_border_width="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@android:mipmap/sym_def_app_icon" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="Titre"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/description"
@@ -63,16 +75,6 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/avancement"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
-                android:layout_marginLeft="14dp"
-                android:layout_marginTop="5dp"
-                android:text="avancement"
-                android:textSize="14sp" />
-
-            <TextView
                 android:id="@+id/status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -82,6 +84,23 @@
                 android:text="Status"
                 android:textColor="?android:attr/colorActivatedHighlight"
                 android:textSize="14sp" />
+            <TextView
+                android:id="@+id/avancement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="5dp"
+                android:text="avancement"
+                android:textSize="14sp" />
+
+            <ProgressBar
+                android:id="@+id/progressBar1"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:progress="0" />
 
         </LinearLayout>
     </LinearLayout>

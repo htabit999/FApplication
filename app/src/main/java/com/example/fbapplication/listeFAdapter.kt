@@ -10,11 +10,11 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.fbapplication.R
 import com.example.fbapplication.models.Project
-import com.example.fbapplication.models.ProjectView
 import com.example.fbapplication.models.Usr
 import com.squareup.picasso.Picasso
-class listeFSAdapter(private val context: Activity, private val title: ArrayList<ProjectView>)
-    : ArrayAdapter<ProjectView>(context, R.layout.custom_fslist, title) {
+
+class listeFAdapter(private val context: Activity, private val title: ArrayList<Project>)
+    : ArrayAdapter<Project>(context, R.layout.custom_fslist, title) {
     override fun getView(position: Int, view: View?, parent: ViewGroup): View
     {
         val inflater = context.layoutInflater
@@ -34,7 +34,6 @@ class listeFSAdapter(private val context: Activity, private val title: ArrayList
         datefin.text = "Au : " + title[position].DATEFIN
         avancement.text = "Taux d avancement : " + title[position].AVANCEMENT.toString() + "%"
         progressBar.progress = title[position].AVANCEMENT
-        Picasso.get().load(title[position].URL).into(image)
         return rowView
     }
 }

@@ -54,7 +54,7 @@ class DataFSActivity : AppCompatActivity() {
                     }
                 }
                 val listView = findViewById<ListView>(R.id.listeView) as ListView
-                val myListAdapter = listeFSAdapter(this@DataFSActivity, list)
+                val myListAdapter = listeFAdapter(this@DataFSActivity, list)
                 listView.adapter = myListAdapter
                 listView.setOnItemClickListener()
                 { adapterView, view, position, id ->

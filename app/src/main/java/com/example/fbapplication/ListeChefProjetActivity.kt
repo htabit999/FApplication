@@ -6,10 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ListView
 import android.widget.TextView
-import com.example.fbapplication.models.Project
-import com.example.fbapplication.models.Projet
-import com.example.fbapplication.models.Tache
-import com.example.fbapplication.models.Users
+import com.example.fbapplication.models.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.firestore.ktx.firestore
@@ -26,7 +23,7 @@ class ListeChefProjetActivity : AppCompatActivity() {
         val TAG = javaClass.simpleName
         setContentView(R.layout.activity_liste_chef_projet)
         listView = findViewById(R.id.listeTView)
-        var list = ArrayList<Users>()
+        var list = ArrayList<Usr>()
         val user = FirebaseAuth.getInstance().currentUser!!.uid
         db.collection("Users").get()
             .addOnCompleteListener {
@@ -36,12 +33,13 @@ class ListeChefProjetActivity : AppCompatActivity() {
                         if (document.data.getValue("Role") =="Chef de projet")
                         {
                             list.add(
-                                Users(
+                                Usr(
                                     document.data.getValue("Nom") as String,
                                     document.data.getValue("Prenom") as String,
                                     document.data.getValue("Email") as String,
                                     document.data.getValue("UID") as String,
-                                    document.data.getValue("Role") as String
+                                    document.data.getValue("Role") as String,
+                                    document.data.getValue("Url") as String
                                 )
                             )
                         }
@@ -62,6 +60,7 @@ class ListeChefProjetActivity : AppCompatActivity() {
                     intent.putExtra("prenom", list[position].PRENOM)
                     intent.putExtra("email", list[position].EMAIL)
                     intent.putExtra("uid", list[position].UID)
+                    intent.putExtra("url", list[position].URL)
                     intent.putExtra("rl", list[position].ROLE)
                     intent.putExtra("role", role)
                     intent.putExtra("nom", nom)

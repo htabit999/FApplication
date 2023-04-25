@@ -202,7 +202,7 @@ class majCHProjetActivity : AppCompatActivity() {
         var chef: String = findViewById<EditText>(R.id.editTextChef).text.toString()
 
         val intent = Intent(this, listeActivity::class.java)
-        intent.putExtra("activity", "majCHProjetActivity")
+        intent.putExtra("activity", "majchprojet")
         intent.putExtra("projet", namep)
         intent.putExtra("description1", descr1p)
         intent.putExtra("dated", datedp)

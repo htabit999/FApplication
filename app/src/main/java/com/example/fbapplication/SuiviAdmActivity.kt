@@ -49,7 +49,7 @@ class SuiviAdmActivity : AppCompatActivity() {
                         )
                     }
                 }
-                Toast.makeText(this, "suivi adm", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "suivi adm", Toast.LENGTH_SHORT).show()
                 val listView = findViewById<ListView>(R.id.listeView) as ListView
                 val myListAdapter = listeAdapterSuivi(this@SuiviAdmActivity, list)
                 listView.adapter = myListAdapter

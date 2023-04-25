@@ -25,7 +25,7 @@ class SuiviTacheColActivity : AppCompatActivity() {
         setContentView(R.layout.activity_suivi_tache_col)
         listView = findViewById(R.id.listeView)
         var list = ArrayList<Tache>()
-        val user = FirebaseAuth.getInstance().currentUser!!.uid
+        //val user = FirebaseAuth.getInstance().currentUser!!.uid
         var nom = intent.getStringExtra("nom").toString()
         var role = intent.getStringExtra("role").toString()
         db.collection("Tache").whereEqualTo("Collaborateur", nom)
@@ -66,6 +66,5 @@ class SuiviTacheColActivity : AppCompatActivity() {
         intent.putExtra("nom", nom)
         intent.putExtra("role", role)
         startActivity(intent)
-        //startActivity(Intent(this, menuSuiviActivity::class.java))
     }
 }

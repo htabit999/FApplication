@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ListView
+import android.widget.Toast
 import com.example.fbapplication.models.Project
 import com.example.fbapplication.models.Projet
 import com.example.fbapplication.models.Tache
@@ -26,8 +27,9 @@ class SuiviActivity : AppCompatActivity() {
         setContentView(R.layout.activity_suivi)
         listView = findViewById(R.id.listeView)
         var list = ArrayList<Project>()
-        val user = FirebaseAuth.getInstance().currentUser!!.uid
-        var nom = intent.getStringExtra("nom").toString()
+        val role = intent.getStringExtra("role")
+        val nom = intent.getStringExtra("nom")
+        val user = intent.getStringExtra("user")
         db.collection("Projet").whereEqualTo("Chef", nom)
             .get()
             .addOnCompleteListener {
@@ -48,11 +50,11 @@ class SuiviActivity : AppCompatActivity() {
                         )
                     }
                 }
-        val listView = findViewById<ListView>(R.id.listeView) as ListView
-        val myListAdapter = listeAdapterSuivi(this@SuiviActivity, list)
-        listView.adapter = myListAdapter
-        listView.setOnItemClickListener()
-        {
+            val listView = findViewById<ListView>(R.id.listeView) as ListView
+            val myListAdapter = listeAdapterSuivi(this@SuiviActivity, list)
+            listView.adapter = myListAdapter
+            listView.setOnItemClickListener()
+            {
                 adapterView, view, position, id ->
                 val role = intent.getStringExtra("role")
                 val nom = intent.getStringExtra("nom")
@@ -69,9 +71,9 @@ class SuiviActivity : AppCompatActivity() {
                 intent.putExtra("nom", nom)
                 intent.putExtra("user", user)
                 startActivity(intent)
+            }
         }
-    }
-    fun onCancelled(error: DatabaseError) {
+        fun onCancelled(error: DatabaseError) {
         TODO("Not yet implemented")
     }
 }

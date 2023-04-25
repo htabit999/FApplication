@@ -65,6 +65,7 @@ class LoginActivity : AppCompatActivity() {
                                 document.data.getValue("Role") as String
                             )
                         )
+                        //Toast.makeText(this, document.data.getValue("Role") as String, Toast.LENGTH_SHORT).show()
                     }
                 }
                 else

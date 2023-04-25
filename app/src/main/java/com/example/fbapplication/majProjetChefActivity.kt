@@ -109,7 +109,6 @@
             intent.putExtra("role", role)
             intent.putExtra("nom", nom)
             intent.putExtra("user", user)
-            //startActivity(Intent(this, DataFSActivity::class.java))
             startActivity(intent)
             return
         }

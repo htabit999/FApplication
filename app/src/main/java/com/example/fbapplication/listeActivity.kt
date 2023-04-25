@@ -47,21 +47,41 @@ class listeActivity : AppCompatActivity() {
                 startActivity(intent)
             }
             else {
-                val role = intent.getStringExtra("role")
-                val nom = intent.getStringExtra("nom")
-                val user = intent.getStringExtra("user")
-                var intent: Intent = Intent(applicationContext, majProjetActivity::class.java)
-                intent.putExtra("projet", nprj)
-                intent.putExtra("description1", d1)
-                intent.putExtra("dated", dd)
-                intent.putExtra("datef",df)
-                intent.putExtra("status", value)
-                intent.putExtra("av", av)
-                intent.putExtra("ch", ch)
-                intent.putExtra("role", role)
-                intent.putExtra("nom", nom)
-                intent.putExtra("user", user)
-                startActivity(intent)
+                if (activite=="majchprojet") {
+                    val role = intent.getStringExtra("role")
+                    val nom = intent.getStringExtra("nom")
+                    val user = intent.getStringExtra("user")
+                    var intent: Intent = Intent(applicationContext, majCHProjetActivity::class.java)
+                    intent.putExtra("projet", nprj)
+                    intent.putExtra("description1", d1)
+                    intent.putExtra("dated", dd)
+                    intent.putExtra("datef", df)
+                    intent.putExtra("status", value)
+                    intent.putExtra("av", av)
+                    intent.putExtra("ch", ch)
+                    intent.putExtra("role", role)
+                    intent.putExtra("nom", nom)
+                    intent.putExtra("user", user)
+                    startActivity(intent)
+                }
+                else
+                {
+                    val role = intent.getStringExtra("role")
+                    val nom = intent.getStringExtra("nom")
+                    val user = intent.getStringExtra("user")
+                    var intent: Intent = Intent(applicationContext, majProjetActivity::class.java)
+                    intent.putExtra("projet", nprj)
+                    intent.putExtra("description1", d1)
+                    intent.putExtra("dated", dd)
+                    intent.putExtra("datef",df)
+                    intent.putExtra("status", value)
+                    intent.putExtra("av", av)
+                    intent.putExtra("ch", ch)
+                    intent.putExtra("role", role)
+                    intent.putExtra("nom", nom)
+                    intent.putExtra("user", user)
+                    startActivity(intent)
+                }
             }
         }
     }

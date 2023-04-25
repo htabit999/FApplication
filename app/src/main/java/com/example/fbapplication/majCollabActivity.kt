@@ -25,6 +25,7 @@ class majCollabActivity : AppCompatActivity() {
         val email=intent.getStringExtra("email")
         val psw = intent.getStringExtra("psw")
         val rpsw=intent.getStringExtra("rpsw")
+        val url=intent.getStringExtra("url")
         val rl = this.findViewById(R.id.role_edit_text) as TextView
         val nm = this.findViewById(R.id.editTextNom) as TextView
         val pr = this.findViewById(R.id.editTextPrenom) as TextView
@@ -46,6 +47,8 @@ class majCollabActivity : AppCompatActivity() {
         var nom: String = findViewById<EditText>(R.id.editTextNom).text.toString()
         var prenom: String = findViewById<EditText>(R.id.editTextPrenom).text.toString()
         //var role: String = findViewById<EditText>(R.id.role_edit_text).text.toString()
+        var intent1 :Intent= getIntent()
+        val url=intent.getStringExtra("url")
         if (nom.isEmpty() ||  email.isEmpty() || prenom.isEmpty() )
         {
             Toast.makeText(this, "Merci de remplir les champs", Toast.LENGTH_LONG).show()
@@ -58,6 +61,7 @@ class majCollabActivity : AppCompatActivity() {
             add["Prenom"] = prenom
             add["Email"] = email
             add["Role"] = "Collaborateur"
+            add["Url"]=url.toString()
             var idp: String = db.collection("Projet").id
             db.collection("Users")
                 .document(nom).set(add)
@@ -67,6 +71,7 @@ class majCollabActivity : AppCompatActivity() {
                     var user = intent1.getStringExtra("user").toString()
                     var nom = intent1.getStringExtra("nom").toString()
                     var role = intent1.getStringExtra("role").toString()
+                    val url=intent.getStringExtra("url")
                     val intent: Intent =  Intent(applicationContext, MenuCollabActivity::class.java)
                     intent.putExtra("user", user)
                     intent.putExtra("role", role)

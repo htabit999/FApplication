@@ -12,17 +12,21 @@ import com.example.fbapplication.models.Project
 class listeAdapterSuivi(private val context: Activity, private val title: ArrayList<Project>)
         : ArrayAdapter<Project>(context, R.layout.suivi_list, title) {
         override fun getView(position: Int, view: View?, parent: ViewGroup): View {
-
             val inflater = context.layoutInflater
             val rowView = inflater.inflate(R.layout.suivi_list, null, true)
             val titleText = rowView.findViewById(R.id.title) as TextView
+            val descrText = rowView.findViewById(R.id.description) as TextView
+            val datedbText = rowView.findViewById(R.id.datedb) as TextView
+            val datefnText = rowView.findViewById(R.id.datefn) as TextView
             val imageView = rowView.findViewById(R.id.icon) as ImageView
             val chefText = rowView.findViewById(R.id.chef) as TextView
             val statusText = rowView.findViewById(R.id.status) as TextView
             titleText.text = title[position].PROJET
-            chefText.text = title[position].DESCRIPTION1
+            descrText.text = title[position].DESCRIPTION1
+            chefText.text = title[position].CHEF
+            datedbText.text = title[position].DATEDEB
+            datefnText.text = title[position].DATEFIN
             statusText.text = title[position].STATUS
-
             when (title[position].AVANCEMENT) {
                 10 -> {
                     imageView.setImageResource(R.drawable.d)
@@ -52,12 +56,11 @@ class listeAdapterSuivi(private val context: Activity, private val title: ArrayL
                     imageView.setImageResource(R.drawable.kd)
                 }
                 100 -> {
-                    imageView.setImageResource(R.drawable.kd)
+                    imageView.setImageResource(R.drawable.cn)
                 }
                 0 -> {
-                    imageView.setImageResource(R.drawable.d)
+                    imageView.setImageResource(R.drawable.z)
                 }
-                //imageView.setImageResource(title[position])
             }
             return rowView
         }

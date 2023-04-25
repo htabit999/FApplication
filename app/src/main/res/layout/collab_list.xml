@@ -5,29 +5,43 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:background="@drawable/lineareborder">
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/filter_spinner_dropdown_bg"
-        android:gravity="center">
 
-        <TextView
-            android:id="@+id/nom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginLeft="15dp"
-            android:text="Membre Equipe"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            android:textColor="#3F51B5"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/icon"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="70dp"
+            android:layout_height="61dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="24dp"
+            app:civ_border_color="#FF3700B3"
+            app:civ_border_width="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@android:mipmap/sym_def_app_icon" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/nom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
+                android:text="Membre Equipe"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="#3F51B5"
+                android:textSize="13dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/prenom"
@@ -38,7 +52,8 @@
                 android:layout_marginTop="5dp"
                 android:text="Prenom "
                 android:textColor="@color/design_default_color_on_secondary"
-                android:textSize="16sp" />
+                android:textSize="12dp" />
+
             <TextView
                 android:id="@+id/email"
                 android:layout_width="match_parent"
@@ -47,17 +62,8 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="5dp"
                 android:text="Email"
-                android:textSize="16sp" />
+                android:textSize="12dp" />
 
-            <TextView
-                android:id="@+id/role"
-                android:layout_width="332dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="5dp"
-                android:text="Role"
-                android:textSize="16sp" />
 
         </LinearLayout>
     </LinearLayout>

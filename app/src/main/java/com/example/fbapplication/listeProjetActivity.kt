@@ -58,7 +58,6 @@ class listeProjetActivity : AppCompatActivity()
 
             override fun onDataChange(snapshot: DataSnapshot)
             {
-
                 for (i in snapshot.children) {
                     i.child("Projet").children.forEach {
                         it.children.forEach {
