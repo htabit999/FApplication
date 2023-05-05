@@ -11,6 +11,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fbapplication.models.Usr
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -25,6 +26,8 @@ class CollabActivity : AppCompatActivity() {
     lateinit var imageView: ImageView
     var selectedPhotoUri: Uri? = null;
     lateinit var uploadImageBtn: Button
+    var GetUid: String? =null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_collab)
@@ -130,10 +133,10 @@ class CollabActivity : AppCompatActivity() {
         var nom: String = findViewById<EditText>(R.id.editTextNom).text.toString()
         var prenom: String = findViewById<EditText>(R.id.editTextPrenom).text.toString()
         //var role: String = findViewById<EditText>(R.id.role_edit_text).text.toString()
-        uploadImageBtn.visibility=View.VISIBLE
+        //uploadImageBtn.visibility=View.VISIBLE
         if (nom.isEmpty() || password.isEmpty() || email.isEmpty() || prenom.isEmpty() )
             {
-                Toast.makeText(this, "Merci de remplir les champs", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Merci de remplir les champs", Toast.LENGTH_SHORT).show()
             }
         else {
             val user = HashMap<String, Any>()
@@ -144,9 +147,12 @@ class CollabActivity : AppCompatActivity() {
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        Toast.makeText(this, "User added ", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, "User added ", Toast.LENGTH_SHORT).show()
+                        uploadImageBtn.visibility=View.VISIBLE
+                        val user: FirebaseUser? = task.result.user
+                        GetUid=user?.uid
                     } else {
-                        Toast.makeText(this, "User not added ", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, "User not added ", Toast.LENGTH_SHORT).show()
                     }
                 }
         }
@@ -157,7 +163,8 @@ class CollabActivity : AppCompatActivity() {
         var nomc: String = findViewById<EditText>(R.id.editTextNom).text.toString()
         var prenom: String = findViewById<EditText>(R.id.editTextPrenom).text.toString()
         val add = HashMap<String, Any>()
-        add["UID"] = uid
+        //add["UID"] = uid
+        add["UID"] = GetUid.toString()
         add["Nom"] = nomc
         add["Prenom"] = prenom
         add["Email"] = email
@@ -166,7 +173,7 @@ class CollabActivity : AppCompatActivity() {
         dbf.collection("Users")
             .document(nomc).set(add)
             .addOnSuccessListener {
-                Toast.makeText(this, "Data added ", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Data added ", Toast.LENGTH_SHORT ).show()
                 var intent1 :Intent= getIntent()
                 var user = intent1.getStringExtra("user").toString()
                 var nom = intent1.getStringExtra("nom").toString()
@@ -178,7 +185,7 @@ class CollabActivity : AppCompatActivity() {
                 startActivity(intent)
             }
             .addOnFailureListener {
-                Toast.makeText(this, " Data not added ", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, " Data not added ", Toast.LENGTH_SHORT).show()
             }
         return
     }

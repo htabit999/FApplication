@@ -35,7 +35,7 @@ class listeAdapterCollab(private var context: Activity, private val title: Array
         prenom.text = "Prenom : " + title[position].PRENOM
         email.text = "Email : " + title[position].EMAIL
         //role.text =""
-            //title[position].ROLE
+        //title[position].ROLE
         Picasso.get().load(title[position].URL).into(image)
         //context.grantUriPermission(context.getPackageName(), Uri.parse(title[position].PRENOM), Intent.FLAG_GRANT_READ_URI_PERMISSION);
         //val bitmap: Bitmap = MediaStore.Images.Media.getBitmap(context.contentResolver, Uri.parse(title[position].PRENOM))

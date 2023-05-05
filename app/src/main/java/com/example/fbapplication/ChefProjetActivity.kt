@@ -11,9 +11,9 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.example.fbapplication.models.User
 import com.example.fbapplication.models.Usr
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -30,6 +30,7 @@ class ChefProjetActivity : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
     private var dbf = Firebase.firestore
     lateinit var imageView: ImageView
+    var GetUid: String? =null
     var fileUri: Uri? = null;
     var selectedPhotoUri: Uri? = null;
     lateinit var uploadImageBtn: Button
@@ -74,7 +75,7 @@ class ChefProjetActivity : AppCompatActivity() {
             val filePathColumn = arrayOf(MediaStore.Images.Media.DATA)
             contentResolver.query(selectedPhotoUri!!, filePathColumn, null, null, null)?.use {
                 it.moveToFirst()
-                Toast.makeText(this@ChefProjetActivity,"31",Toast.LENGTH_SHORT).show()
+               // Toast.makeText(this@ChefProjetActivity,"31",Toast.LENGTH_SHORT).show()
                 val columnIndex = it.getColumnIndex(filePathColumn[0])
                 val picturePath = it.getString(columnIndex)
                 if (picturePath.contains("DCIM")) {
@@ -136,7 +137,7 @@ class ChefProjetActivity : AppCompatActivity() {
             var nom: String = findViewById<EditText>(R.id.editTextNom).text.toString()
             var prenom: String = findViewById<EditText>(R.id.editTextPrenom).text.toString()
             //var role: String = findViewById<EditText>(R.id.role_edit_text).text.toString()
-            uploadImageBtn.visibility=View.VISIBLE
+            //uploadImageBtn.visibility=View.VISIBLE
             if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Il faut remplir tous les champs", Toast.LENGTH_SHORT).show()
             } else {
@@ -148,10 +149,13 @@ class ChefProjetActivity : AppCompatActivity() {
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            Toast.makeText(this, "User added ", Toast.LENGTH_LONG).show()
+                            uploadImageBtn.visibility=View.VISIBLE
+                            Toast.makeText(this, "User added ", Toast.LENGTH_SHORT).show()
+                            val user: FirebaseUser? = task.result.user
+                            GetUid=user?.uid
                             //addUser()
                         } else {
-                            Toast.makeText(this, "User not added ", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this, "User not added "+task.exception, Toast.LENGTH_SHORT).show()
                         }
                     }
             }
@@ -168,7 +172,7 @@ class ChefProjetActivity : AppCompatActivity() {
                 Toast.makeText(this, "Il faut remplir tous les champs", Toast.LENGTH_SHORT).show()
             } else {
                 val add = HashMap<String, Any>()
-                add["UID"] = uid
+                add["UID"] = GetUid.toString()
                 add["Nom"] = nom
                 add["Prenom"] = prenom
                 add["Email"] = email
@@ -180,7 +184,7 @@ class ChefProjetActivity : AppCompatActivity() {
                         val role = intent.getStringExtra("role")
                         val nom = intent.getStringExtra("nom")
                         val user = intent.getStringExtra("user")
-                        Toast.makeText(this, "Data added ", Toast.LENGTH_LONG).show()
+                        //Toast.makeText(this, "Data added ", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, MenuChefProjetActivity::class.java)
                         intent.putExtra("user", user)
                         intent.putExtra("role", role)
@@ -188,7 +192,7 @@ class ChefProjetActivity : AppCompatActivity() {
                         startActivity(intent)
                     }
                     .addOnFailureListener {
-                        Toast.makeText(this, " Data not added ", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, " Data not added ", Toast.LENGTH_SHORT).show()
                     }
                 return
             }
@@ -206,7 +210,7 @@ class ChefProjetActivity : AppCompatActivity() {
                 progressDialog.show()
                 val ref: StorageReference = FirebaseStorage.getInstance().getReference()
                     .child("Photos").child(nom)
-                Toast.makeText(applicationContext, fileUri!!.toString(), Toast.LENGTH_SHORT).show()
+                //Toast.makeText(applicationContext, fileUri!!.toString(), Toast.LENGTH_SHORT).show()
                 ref.putFile(fileUri!!).addOnSuccessListener {
                     progressDialog.dismiss()
                     Toast.makeText(applicationContext, "Image Uploaded..", Toast.LENGTH_SHORT)
@@ -251,7 +255,6 @@ class ChefProjetActivity : AppCompatActivity() {
             intent.putExtra("nom", nom)
             startActivity(intent)
     }
-        //
 
      fun saveUserToFirebaseDatabase(profileImageUrl: String?) {
             val uid = FirebaseAuth.getInstance().uid ?: return

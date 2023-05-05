@@ -51,4 +51,16 @@ class MenuChefProjetActivity : AppCompatActivity() {
         startActivity(intent)
         //startActivity(Intent(this, MenuChefActivity::class.java))
     }
+    public fun Chat(view: View) {
+        //Toast.makeText(this, "chat", Toast.LENGTH_LONG).show()
+        val intent1 :Intent= getIntent()
+        val user = intent1.getStringExtra("user").toString()
+        val nom = intent1.getStringExtra("nom").toString()
+        val role = intent1.getStringExtra("role").toString()
+        val intent: Intent =  Intent(applicationContext, UserActivity::class.java)
+        intent.putExtra("role", role)
+        intent.putExtra("nom", nom)
+        intent.putExtra("user", user)
+        startActivity(intent)
+    }
 }

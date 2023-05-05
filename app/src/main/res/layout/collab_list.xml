@@ -64,7 +64,6 @@
                 android:text="Email"
                 android:textSize="12dp" />
 
-
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

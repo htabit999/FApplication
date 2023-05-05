@@ -87,7 +87,7 @@ class CHDataFSActivity : AppCompatActivity() {
                             intent.putExtra("nom", nom)
                             intent.putExtra("user", user)
                             startActivity(intent)
-                            Toast.makeText(this, "UID :"+liste[position].USERID, Toast.LENGTH_SHORT).show()
+                            //Toast.makeText(this, "UID :"+liste[position].USERID, Toast.LENGTH_SHORT).show()
                     }
                 }
                        //

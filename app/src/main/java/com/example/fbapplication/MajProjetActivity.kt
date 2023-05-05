@@ -35,7 +35,6 @@ class majProjetActivity : AppCompatActivity() {
         val df = intent.getStringExtra("datef")
         val av = intent.getStringExtra("av")
         val ch = intent.getStringExtra("ch")
-
         val prj = this.findViewById(R.id.nom_edit_text) as TextView
         val des1 = this.findViewById(R.id.description1_edit_text) as TextView
         val dtd = this.findViewById(R.id.editTextDateD) as TextView
@@ -78,13 +77,11 @@ class majProjetActivity : AppCompatActivity() {
                 val role = intent.getStringExtra("role")
                 val nom = intent.getStringExtra("nom")
                 val user = intent.getStringExtra("user")
-
                 val intent: Intent =  Intent(applicationContext, DataActivity::class.java)
                 intent.putExtra("role", role)
                 intent.putExtra("nom", nom)
                 intent.putExtra("user", user)
                 startActivity(intent)
-
                 //startActivity(Intent(this, DataActivity::class.java))
         }
     }
